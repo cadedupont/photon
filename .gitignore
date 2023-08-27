@@ -1,0 +1,2 @@
+# Environment variables for storing sensitive database credentials
+.env
