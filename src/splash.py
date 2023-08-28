@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 # Create root window
 root = Tk()
 root.title("Photon")
-root.iconbitmap("res/logo.ico")
+root.iconbitmap("res/NineLives.ico")
 root.resizable(False, False)
 
 # Center root window to middle of screen
