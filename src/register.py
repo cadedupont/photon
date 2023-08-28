@@ -7,7 +7,7 @@ builder.add_from_file("res/register.ui")
 
 # Create root window
 root = builder.get_object("root")
-root.iconbitmap("res/NineLivesNobg.ico")
+root.iconbitmap("res/logo.ico")
 root.focus_force()
 
 # Place window in center of screen
