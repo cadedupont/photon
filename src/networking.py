@@ -3,20 +3,24 @@
 # Purpose: Module to handle UDP networking for the Photon laser tag system communication between the control console and the packs.
 
 import socket
+import threading
 
 # CONSTANTS
 START_GAME_CODE: int = 202
 END_GAME_CODE: int = 221
 RED_BASE_SCORED_CODE: int = 66
 GREEN_BASE_SCORED_CODE: int = 148
+BUFFER_SIZE: int = 1024
 
 class Networking:
     def __init__(self) -> None:
         self.address: str = "127.0.0.1"
         self.transmit_port: int = 7500
         self.recieve_port: int = 7501
-        self.transmit_socket: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-        self.transmit_socket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 32)
+        self.transmit_socket: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.transmit_socket.bind((self.address, self.transmit_port))
+        self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.recieve_socket.bind((self.address, self.recieve_port))
 
     def transmit_start_game_code(self) -> None:
         pass
@@ -36,8 +40,18 @@ class Networking:
     def player_hit(self) -> None:
         pass
 
+    def run(self) -> None:
+        while True:
+            raw_message, return_address = self.recieve_socket.recvfrom(BUFFER_SIZE)
+            print("Message: " + raw_message.decode())
+            print("Return Address: " + str(return_address))
+            self.recieve_socket.sendto(str.encode("Thanks and welcome."), return_address)
 
-        
+
+if __name__ == "__main__":
+    network_mod: Networking = Networking()
+    network_mod.run()
+    
 
 
 # Notes:
