@@ -17,10 +17,10 @@ key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
 # Get user input from GUI
-info = register.info
+info: dict = register.info
 
 # Check whether user already exists in user table
-user = supabase.table("players").select("*").eq("username", info["username"]).execute()
+user: dict = supabase.table("players").select("*").eq("username", info["username"]).execute()
 
 # While user already exists, re-run registration GUI
 while (user.data != []):
@@ -29,10 +29,10 @@ while (user.data != []):
 
     # Re-run registration GUI
     reload(register)
-    info = register.info
+    info: dict = register.info
     
     # Re-run query to check whether user already exists
-    user = supabase.table("players").select("*").eq("username", info["username"]).execute()
+    user: dict = supabase.table("players").select("*").eq("username", info["username"]).execute()
 
 # Insert player into table and display success message
 supabase.table("players").insert([info]).execute()
