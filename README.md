@@ -11,7 +11,7 @@ We will be recreating the control console for the popular Photon laser tag game.
 4. Game loop to count score and tally up game totals.
 
 # Contributors
-- Thomas Buser
+- Thomas Buser 
 - Sophia Forrester
 - Cade DuPont
 - Grace Schmidt
