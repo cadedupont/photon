@@ -7,6 +7,7 @@ import os
 # Run splash screen and player registration GUI
 import splash
 import register
+import networking
 
 # Load environment variables
 load_dotenv()
@@ -37,3 +38,4 @@ while (user.data != []):
 # Insert player into table and display success message
 supabase.table("players").insert([info]).execute()
 messagebox.showinfo("Success", "User successfully registered!")
+

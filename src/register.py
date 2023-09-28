@@ -12,7 +12,7 @@ root.focus_force()
 
 # Place window in center of screen
 width: int = 300
-height: int = 210
+height: int = 300
 x: int = (root.winfo_screenwidth() // 2) - (width // 2)
 y: int = (root.winfo_screenheight() // 2) - (height // 2)
 root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
@@ -21,13 +21,14 @@ root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 first_name: Entry = builder.get_object("first_name_entry")
 last_name: Entry = builder.get_object("last_name_entry")
 username: Entry = builder.get_object("username_entry")
+equipment: Entry = builder.get_object("equipment_entry")
 submit_button: Button = builder.get_object("submit_button")
 
 # Make cursor focus on first name entry field by default
 first_name.focus_force()
 
 # Define tab order of widgets
-widgets = [first_name, last_name, username, submit_button]
+widgets = [first_name, last_name, username, equipment, submit_button]
 for widget in widgets:
     widget.lift()
 
@@ -38,7 +39,8 @@ def submit():
     info = {
         "first_name": first_name.get(),
         "last_name": last_name.get(),
-        "username": username.get()
+        "username": username.get(),
+        "equipment_id": equipment.get()
     }
 
     # If any fields are empty, display error message
@@ -53,6 +55,11 @@ def submit():
     # Check if first and last name contain only letters and spaces
     if not all(char.isalpha() or char.isspace() for char in info["first_name"] + info["last_name"]):
         messagebox.showerror("Error", "Please enter only letters for first and last name")
+        return
+
+    # Check if equipment id contains letters/special characters instead of only numbers
+    if not all(char.isdigit() for char in info["equipment_id"]):
+        messagebox.showerror("Error", "Please enter only one number for equipment id")
         return
 
     # Destroy root window
