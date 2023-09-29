@@ -35,8 +35,14 @@ while (user.data != []):
     # Re-run query to check whether user already exists
     user: dict = supabase.table("players").select("*").eq("username", info["username"]).execute()
 
-# Insert player into table and display success message
-supabase.table("players").insert([info]).execute()
+# Insert first name, last name, username into user table
+supabase.table("players").insert([
+    {
+        "first_name": info["first_name"],
+        "last_name": info["last_name"],
+        "username": info["username"]
+    }
+]).execute()
 messagebox.showinfo("Success", "User successfully registered!")
 
 # Broadcast equipment to code to network after user entry
