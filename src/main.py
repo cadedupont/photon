@@ -7,7 +7,7 @@ import os
 # Run splash screen and player registration GUI
 import splash
 import register
-import networking
+from networking import Networking
 
 # Load environment variables
 load_dotenv()
@@ -39,3 +39,6 @@ while (user.data != []):
 supabase.table("players").insert([info]).execute()
 messagebox.showinfo("Success", "User successfully registered!")
 
+# Broadcast equipment to code to network after user entry
+network: Networking = Networking()
+network.transmit_equipment_code(str(info["equipment_id"]))

@@ -13,7 +13,7 @@ BUFFER_SIZE: int = 1024
 GAME_TIME_SECONDS: int = 360 # Seconds
 BROADCAST_ADDRESS: str = "255.255.255.255"
 TRANSMIT_PORT: int = 7501
-RECIEVE_PORT: int - 7500
+RECIEVE_PORT: int = 7500
 
 class Networking:
     def __init__(self) -> None:
@@ -24,6 +24,7 @@ class Networking:
     def transmit_equipment_code(self, equipment_code: str) -> None:
         self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.transmit_socket.sendto(str.encode(str(equipment_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+        print("Transmitted: " + str(equipment_code))
     
     def transmit_start_game_code(self) -> None:
         pass
