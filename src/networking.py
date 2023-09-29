@@ -22,9 +22,9 @@ class Networking:
         self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     def transmit_equipment_code(self, equipment_code: str) -> None:
+        # This is using the python BSD interface. The 1 enables broadcast at the syscall level and privledged process.
         self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.transmit_socket.sendto(str.encode(str(equipment_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
-        print("Transmitted: " + str(equipment_code))
     
     def transmit_start_game_code(self) -> None:
         pass
