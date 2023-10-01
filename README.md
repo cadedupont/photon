@@ -12,7 +12,7 @@ We will be recreating the control console for the popular Photon laser tag game.
 
 # Contributors: Real name|GitHub username
 - Thomas Buser | tjbuser
-- Sophia Forrester | 
+- Sophia Forrester | asophiaforrester
 - Cade DuPont | cadedupont
 - Grace Schmidt | GraceSchmidt1
 - Uyen Thi My Ho | uho2003
