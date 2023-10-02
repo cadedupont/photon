@@ -1,5 +1,6 @@
 # Photon
 Software Engineering project for CSCE 3513. 
+![photon-logo](https://github.com/cadedupont/photon/assets/111768637/6b011e03-f4c7-4da8-8fa2-28278625f280)
 
 # Details
 We will be recreating the control console for the popular Photon laser tag game. The console controls the major functionality of the game. 
