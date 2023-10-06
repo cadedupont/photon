@@ -3,11 +3,11 @@ from pygubu import Builder
 
 # Create builder
 builder: Builder = Builder()
-builder.add_from_file("../res/register.ui")
+builder.add_from_file("res/register.ui")
 
 # Create root window
 root: Tk = builder.get_object("root")
-root.iconbitmap("../res/logo.ico")
+root.iconbitmap("res/logo.ico")
 root.focus_force()
 
 # Place window in center of screen

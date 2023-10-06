@@ -1,0 +1,402 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="toplevel1">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Frame" id="red" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">10</property>
+          <property name="ipady">10</property>
+          <property name="padx">10</property>
+          <property name="pady">10</property>
+          <property name="row">0</property>
+        </layout>
+        <containerlayout manager="grid">
+          <property name="anchor">center</property>
+        </containerlayout>
+        <child>
+          <object class="ttk.Label" id="label4">
+            <property name="text" translatable="yes">ID:</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label5">
+            <property name="text" translatable="yes">Username:</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label6">
+            <property name="relief">flat</property>
+            <property name="text" translatable="yes">Red Team</property>
+            <layout manager="place">
+              <property name="anchor">nw</property>
+              <property name="relx">0.0</property>
+              <property name="rely">0.0</property>
+              <property name="x">202</property>
+              <property name="y">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry212">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry213">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry214">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry215">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry216">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry217">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry218">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry219">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry220">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry221">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry222">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">6</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry223">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">6</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry224">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">7</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry225">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">7</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry226">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">8</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry227">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">8</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry228">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">9</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry229">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">9</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry230">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">10</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry231">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">10</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry232">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">11</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry233">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">11</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry234">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">12</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry235">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">12</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry236">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">13</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry237">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">13</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry238">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">14</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry239">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">14</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry240">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">15</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry241">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipadx">10</property>
+              <property name="padx">10</property>
+              <property name="pady">10</property>
+              <property name="row">15</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="green" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">1</property>
+          <property name="ipadx">10</property>
+          <property name="ipady">10</property>
+          <property name="padx">10</property>
+          <property name="pady">10</property>
+          <property name="row">0</property>
+        </layout>
+        <containerlayout manager="grid">
+          <property name="anchor">center</property>
+        </containerlayout>
+      </object>
+    </child>
+  </object>
+</interface>

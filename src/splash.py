@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 # Create root window
 root: Tk = Tk()
 root.title("Photon")
-root.iconbitmap("../res/logo.ico")
+root.iconbitmap("res/logo.ico")
 root.resizable(False, False)
 
 # Center root window to middle of screen
@@ -15,7 +15,7 @@ y: int = (root.winfo_screenheight() // 2) - (height // 2)
 root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
 # Load image
-splash: ImageTk.PhotoImage = ImageTk.PhotoImage(Image.open("../res/splash.jpg"))
+splash: ImageTk.PhotoImage = ImageTk.PhotoImage(Image.open("res/splash.jpg"))
 
 # Create splash screen
 splash_screen: Label = Label(root, image=splash)
