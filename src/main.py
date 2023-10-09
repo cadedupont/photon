@@ -1,8 +1,5 @@
 import tkinter as tk
 import supabase
-
-import time
-
 from dotenv import load_dotenv
 from os import getenv
 
