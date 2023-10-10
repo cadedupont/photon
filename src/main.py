@@ -13,18 +13,17 @@ supabase_client: supabase.Client = supabase.create_client(
     getenv("SUPABASE_KEY")
 )
 
-# Build the main window
+# Build main window, set title, make fullscreen
 root: tk.Tk = tk.Tk()
 root.title("Photon")
-root.focus_force()
-
-# Make background white
+root.iconbitmap("res/logo.ico")
+root.state("zoomed")
 root.configure(background="white")
 
 # Force window to fill screen, place at top left
 width: int = root.winfo_screenwidth()
 height: int = root.winfo_screenheight()
-root.geometry(f"{width}x{height}+0+0")
+root.geometry(f"{width}x{height}")
 
 # Bind escape key to exit
 root.bind("<Escape>", lambda event: root.destroy())
