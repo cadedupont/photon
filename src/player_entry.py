@@ -8,9 +8,15 @@ builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/player_entry.ui")
 
 database_response = None
+users: dict[str, dict[int, str]] = {
+    "green": {},
+    "red": {}
+}
+
 def on_tab(event, root, supabase_client, entry_ids: dict):
-    # Make database_response global
+    # Make database response and users dictionary global
     global database_response
+    global users
 
     # Get the entry field ID
     # If key doesn't exist, do nothing
@@ -42,9 +48,23 @@ def on_tab(event, root, supabase_client, entry_ids: dict):
         # Query the database for the user with the matching ID
         database_response = supabase_client.table("users").select("*").eq("id", event.widget.get()).execute()
 
-        # If the user exists, autofill username entry field
+        # If user already exists in database, autofill username entry field
         if database_response.data != []:
-            builder.get_object(entry_field_id.replace("user_id", "username"), root).insert(0, database_response.data[0]["username"])
+            username: str = database_response.data[0]["username"]
+            user_id: str = database_response.data[0]["id"]
+
+            # If user already exists in users dictionary, display error message and refocus entry field to clear input
+            if user_id in users["green"] or user_id in users["red"]:
+                messagebox.showerror("Error", "User already exists")
+                event.widget.delete(0, tk.END)
+                root.after_idle(lambda: event.widget.focus_set())
+                return
+
+            # Add user information to users dictionary, specifying team
+            users["green" if "green" in entry_field_id else "red"][user_id] = username
+
+            # Autofill username entry field
+            builder.get_object(entry_field_id.replace("user_id", "username"), root).insert(0, username)
 
             # Jump to next row's equipment ID entry field if not on last row
             row: int = int(entry_field_id.split("_")[-1])
@@ -53,12 +73,18 @@ def on_tab(event, root, supabase_client, entry_ids: dict):
 
     # If the user tabs from the username entry field, insert the user into the database if they don't already exist
     elif "username" in entry_field_id and database_response.data == []:
-        # Attempt to insert the user into the database, display error message if POST request fails
+        # Get the user ID entry field
         user_id_widget: tk.Entry = builder.get_object(entry_field_id.replace("username", "user_id"), root)
+
+        # Get contents of user ID entry field and username entry field
+        user_id: str = user_id_widget.get()
+        username: str = event.widget.get()
+
+        # Attempt to insert the user into the database, display error message if POST request fails
         try:
             supabase_client.table("users").insert({
-                "id": user_id_widget.get(),
-                "username": event.widget.get()
+                "id": user_id,
+                "username": username
             }).execute()
         except Exception as e:
             messagebox.showerror("Error", e)
