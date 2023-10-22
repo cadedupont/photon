@@ -131,7 +131,13 @@ def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
 def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, event: tk.Event = None) -> None:
+    # Remove F12 functionality
     root.unbind("<F12>")
+
+    # For each equipment ID entry field, transmit the equipment ID
+    for team in users:
+        for equipment_id in users[team]:
+            Networking().transmit_equipment_code(equipment_id)
     
     # Destroy main_frame
     main_frame.destroy()
