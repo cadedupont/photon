@@ -129,7 +129,16 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
 
 # TODO: Define on_f12 function to clear all entry fields and users dictionary
 def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict) -> None:
-    pass
+
+    #Clear all entry fields
+    for entry_id in entry_ids: 
+        builder.get_object(entry_ids[entry_id], root).delete(0, tk.END)
+
+        #Clear users dictionary 
+        users.clear()
+
+        #Refocus the first entry field 
+        builder.get_object("red_equipment_id_1", root).focus_set()
 
 def build(root: tk.Tk, supabase_client) -> None:
 
