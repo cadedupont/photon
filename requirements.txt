@@ -24,3 +24,4 @@ supabase==1.0.4
 supafunc==0.2.3
 typing_extensions==4.7.1
 websockets==10.4
+opencv-python==4.8.1
