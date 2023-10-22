@@ -119,7 +119,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
         messagebox.showinfo("Success", "User successfully added to the database!")
 
 # TODO: Define on_f12 function to clear all entry fields and users dictionary
-def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict) -> None:
+def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
     # Clear all entry fields
     for entry_id in entry_ids: 
         builder.get_object(entry_ids[entry_id], root).delete(0, tk.END)
@@ -169,5 +169,5 @@ def build(root: tk.Tk, supabase_client, users: Dict) -> None:
 
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
-    root.bind("<F12>", lambda event: on_f12(event, root))
+    root.bind("<F12>", lambda event: on_f12(event, root, entry_ids, users))
     root.bind("<F5>", lambda event: on_f5(event, main_frame, root, users))
