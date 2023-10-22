@@ -32,7 +32,9 @@ class Networking:
         self.transmit_socket.sendto(str.encode(str(START_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def transmit_end_game_code(self) -> None:
-        pass
+        # TODO : Eventually add error checking
+        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.transmit_socket.sendto(str.encode(str(END_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def transmit_player_hit(self, player_code: int) -> None:
         pass
@@ -56,7 +58,8 @@ class Networking:
 
 if __name__ == "__main__":
     network_mod: Networking = Networking()
-    network_mod.transmit_start_game_code() # testing method
+    network_mod.transmit_start_game_code() # test start game method
+    network_mod.transmit_end_game_code() # test end game method
     network_mod.run()
     
 
