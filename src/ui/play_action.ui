@@ -58,7 +58,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_1" named="True">
+              <object class="tk.Label" id="red_username_1" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -69,7 +69,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_2" named="True">
+              <object class="tk.Label" id="red_username_2" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -80,7 +80,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_3" named="True">
+              <object class="tk.Label" id="red_username_3" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -91,7 +91,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_4" named="True">
+              <object class="tk.Label" id="red_username_4" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -102,7 +102,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_5" named="True">
+              <object class="tk.Label" id="red_username_5" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -113,7 +113,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_6" named="True">
+              <object class="tk.Label" id="red_username_6" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -124,7 +124,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_7" named="True">
+              <object class="tk.Label" id="red_username_7" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -135,7 +135,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_8" named="True">
+              <object class="tk.Label" id="red_username_8" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -146,7 +146,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_9" named="True">
+              <object class="tk.Label" id="red_username_9" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -157,7 +157,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_10" named="True">
+              <object class="tk.Label" id="red_username_10" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -168,7 +168,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_11" named="True">
+              <object class="tk.Label" id="red_username_11" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -179,7 +179,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_12" named="True">
+              <object class="tk.Label" id="red_username_12" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -190,7 +190,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_13" named="True">
+              <object class="tk.Label" id="red_username_13" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -201,7 +201,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_14" named="True">
+              <object class="tk.Label" id="red_username_14" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -212,7 +212,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="red_username_15" named="True">
+              <object class="tk.Label" id="red_username_15" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -265,7 +265,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_1" named="True">
+              <object class="tk.Label" id="green_username_1" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -276,7 +276,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_2" named="True">
+              <object class="tk.Label" id="green_username_2" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -287,7 +287,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_3" named="True">
+              <object class="tk.Label" id="green_username_3" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -298,7 +298,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_4" named="True">
+              <object class="tk.Label" id="green_username_4" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -309,7 +309,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_5" named="True">
+              <object class="tk.Label" id="green_username_5" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -320,7 +320,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_6" named="True">
+              <object class="tk.Label" id="green_username_6" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -331,7 +331,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_7" named="True">
+              <object class="tk.Label" id="green_username_7" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -342,7 +342,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_8" named="True">
+              <object class="tk.Label" id="green_username_8" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -353,7 +353,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_9" named="True">
+              <object class="tk.Label" id="green_username_9" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -364,7 +364,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_10" named="True">
+              <object class="tk.Label" id="green_username_10" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -375,7 +375,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_11" named="True">
+              <object class="tk.Label" id="green_username_11" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -386,7 +386,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_12" named="True">
+              <object class="tk.Label" id="green_username_12" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -397,7 +397,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_13" named="True">
+              <object class="tk.Label" id="green_username_13" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -408,7 +408,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_14" named="True">
+              <object class="tk.Label" id="green_username_14" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -419,7 +419,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Entry" id="green_username_15" named="True">
+              <object class="tk.Label" id="green_username_15" named="True">
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>

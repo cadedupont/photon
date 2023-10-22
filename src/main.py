@@ -1,3 +1,5 @@
+from typing import Dict
+
 from dotenv import load_dotenv
 from os import getenv
 
@@ -30,12 +32,18 @@ root.geometry(f"{width}x{height}+0+0")
 root.bind("<Escape>", lambda event: root.destroy())
 
 def main() -> None:
+    # Declare dictionary for storing user information
+    users: Dict[str, Dict[int, tuple[int, str]]] = {
+        "green": {},
+        "red": {}
+    }
+
     # Build the splash screen
     splash: splash_screen = splash_screen.build(root)
 
     # After 3 seconds, destroy the splash screen and build the player entry screen
     root.after(3000, splash.destroy)
-    root.after(3000, player_entry.build, root, supabase_client)
+    root.after(3000, player_entry.build, root, supabase_client, users)
 
     # Run the main loop
     root.mainloop()

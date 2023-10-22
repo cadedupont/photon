@@ -1,6 +1,6 @@
-from typing import Dict, Tuple
-from tkinter import messagebox
+from typing import Dict
 
+from tkinter import messagebox
 import tkinter as tk
 import pygubu
 
@@ -11,17 +11,9 @@ builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/player_entry.ui")
 
 database_response = None
-from typing import Dict
-
-users: Dict[str, Dict[int, Tuple[int, str]]] = {
-    "green": {},
-    "red": {}
-}
-
-def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> None:
+def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users: Dict) -> None:
     # Make database response and users dictionary global
     global database_response
-    global users
 
     # Get the entry field ID
     # If key doesn't exist, do nothing
@@ -132,14 +124,17 @@ def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict) -> None:
     pass
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
-def on_f5(event: tk.Event, root: tk.Tk):
+def on_f5(event: tk.Event, main_frame: tk.Tk, root: tk.Tk) -> None:
     root.unbind("<F12>")
-    #destroy player entry window
-    # root.destroy()
-    # root.build
+    
+    # Destroy main_frame
+    main_frame.destroy()
 
-def build(root: tk.Tk, supabase_client) -> None:
+    # Build the player action screen
+    import play_action
+    play_action.build(root)
 
+def build(root: tk.Tk, supabase_client, users: Dict) -> None:
     # Place the main frame in the center of the root window
     main_frame: tk.Frame = builder.get_object("master", root)
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -165,6 +160,7 @@ def build(root: tk.Tk, supabase_client) -> None:
     # Place focus on the first entry field
     builder.get_object("red_equipment_id_1", red_frame).focus_set()
 
-    # Bind the "Tab" key to the on_tab function
-    root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids))
-    root.bind("<F12>", lambda event: on_f12(event, root, entry_ids))
+    # Bind keys to lambda functions
+    root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
+    root.bind("<F12>", lambda event: on_f12(event, root))
+    root.bind("<F5>", lambda event: on_f5(event, main_frame, root, users))
