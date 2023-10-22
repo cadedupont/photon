@@ -64,7 +64,7 @@ def build(root: tk.Tk, users: Dict) -> None:
     video_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     # Initialize the countdown time
-    seconds: int = 3000
+    seconds: int = 30
 
     # Start the countdown
     update_timer(timer_label, seconds, main_frame)

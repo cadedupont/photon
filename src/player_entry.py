@@ -168,7 +168,7 @@ def build(root: tk.Tk, supabase_client, users: Dict) -> None:
 
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
-    root.bind("<F12>", lambda event: on_f12(event, root, entry_ids, users))
+    root.bind("<KeyPress-F12>", lambda event: on_f12(event, root, entry_ids, users))
     root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, event))
 
     # Bind continue button to F5 function for moving on to play action screen
