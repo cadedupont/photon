@@ -118,7 +118,6 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
         # If the POST request was successful, display a success message
         messagebox.showinfo("Success", "User successfully added to the database!")
 
-# TODO: Define on_f12 function to clear all entry fields and users dictionary
 def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
     # Clear all entry fields
     for entry_id in entry_ids: 
@@ -131,7 +130,7 @@ def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
         builder.get_object("red_equipment_id_1", root).focus_set()
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
-def on_f5(event: tk.Event, main_frame: tk.Tk, root: tk.Tk) -> None:
+def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, event: tk.Event = None) -> None:
     root.unbind("<F12>")
     
     # Destroy main_frame
@@ -139,7 +138,7 @@ def on_f5(event: tk.Event, main_frame: tk.Tk, root: tk.Tk) -> None:
 
     # Build the player action screen
     import play_action
-    play_action.build(root)
+    play_action.build(root, users)
 
 def build(root: tk.Tk, supabase_client, users: Dict) -> None:
     # Place the main frame in the center of the root window
@@ -170,4 +169,8 @@ def build(root: tk.Tk, supabase_client, users: Dict) -> None:
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
     root.bind("<F12>", lambda event: on_f12(event, root, entry_ids, users))
-    root.bind("<F5>", lambda event: on_f5(event, main_frame, root, users))
+    root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, event))
+
+    # Bind continue button to F5 function for moving on to play action screen
+    cont_button: tk.Button = builder.get_object("submit", main_frame)
+    cont_button.configure(command=lambda: on_f5(main_frame, root, users))
