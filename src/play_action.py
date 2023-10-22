@@ -24,7 +24,7 @@ def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, netw
     # If seconds is greater than 0, decrement seconds and call this function again after 1 second
     if seconds > 0:
         seconds -= 1
-        timer_label.after(1000, update_timer, timer_label, seconds, main_frame)
+        timer_label.after(1000, update_timer, timer_label, seconds, main_frame, network)
     else:
         # Destroy main frame and start game, transmitting start game code
         main_frame.destroy()
