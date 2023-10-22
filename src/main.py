@@ -1,7 +1,8 @@
-import tkinter as tk
-import supabase
 from dotenv import load_dotenv
 from os import getenv
+
+import tkinter as tk
+import supabase
 
 import splash_screen
 import player_entry
@@ -23,12 +24,12 @@ root.configure(background="white")
 # Force window to fill screen, place at top left
 width: int = root.winfo_screenwidth()
 height: int = root.winfo_screenheight()
-root.geometry(f"{width}x{height}")
+root.geometry(f"{width}x{height}+0+0")
 
 # Bind escape key to exit
 root.bind("<Escape>", lambda event: root.destroy())
 
-def main():
+def main() -> None:
     # Build the splash screen
     splash: splash_screen = splash_screen.build(root)
 

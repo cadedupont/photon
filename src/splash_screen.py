@@ -1,8 +1,8 @@
-import tkinter as tk
 from PIL import Image, ImageTk
+import tkinter as tk
 
 # Build the splash screen, destroy after 3 seconds
-def build(root: tk.Tk):
+def build(root: tk.Tk) -> tk.Label:
     # Load the splash screen image
     splash_image: ImageTk.PhotoImage = ImageTk.PhotoImage(Image.open("res/splash.jpg"))
 
