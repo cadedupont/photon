@@ -7,6 +7,8 @@ h11==0.14.0
 httpcore==0.17.3
 httpx==0.24.1
 idna==3.4
+numpy==1.26.1
+opencv-python==4.8.1.78
 packaging==23.1
 Pillow==10.0.0
 postgrest==0.10.8
@@ -24,4 +26,3 @@ supabase==1.0.4
 supafunc==0.2.3
 typing_extensions==4.7.1
 websockets==10.4
-opencv-python==4.8.1
