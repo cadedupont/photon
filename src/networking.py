@@ -3,7 +3,6 @@
 # Purpose: Module to handle UDP networking for the Photon laser tag system communication between the control console and the packs.
 
 import socket
-import threading
 
 # CONSTANTS
 START_GAME_CODE: int = 202
@@ -11,17 +10,22 @@ END_GAME_CODE: int = 221
 RED_BASE_SCORED_CODE: int = 66
 GREEN_BASE_SCORED_CODE: int = 148
 BUFFER_SIZE: int = 1024
+GAME_TIME_SECONDS: int = 360 # Seconds
+BROADCAST_ADDRESS: str = "255.255.255.255"
+TRANSMIT_PORT: int = 7501
+RECIEVE_PORT: int = 7500
 
 class Networking:
     def __init__(self) -> None:
-        self.address: str = "127.0.0.1"
-        self.transmit_port: int = 7500
-        self.recieve_port: int = 7501
-        self.transmit_socket: socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.transmit_socket.bind((self.address, self.transmit_port))
+        # Using python BSD socket interface
+        self.transmit_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.recieve_socket.bind((self.address, self.recieve_port))
 
+    def transmit_equipment_code(self, equipment_code: str) -> None:
+        # This is using the python BSD interface. The 1 enables broadcast at the syscall level and privledged process.
+        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.transmit_socket.sendto(str.encode(str(equipment_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+    
     def transmit_start_game_code(self) -> None:
         pass
 
