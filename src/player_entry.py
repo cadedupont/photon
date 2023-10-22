@@ -131,6 +131,13 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
 def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict) -> None:
     pass
 
+# f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
+def on_f5(event: tk.Event, root: tk.Tk):
+    root.unbind("<F12>")
+    #destroy player entry window
+    # root.destroy()
+    # root.build
+
 def build(root: tk.Tk, supabase_client) -> None:
 
     # Place the main frame in the center of the root window
