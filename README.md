@@ -1,7 +1,9 @@
 # Photon
 Software Engineering project for CSCE 3513.
 
-![photon-logo](https://github.com/cadedupont/photon/assets/111768637/6b011e03-f4c7-4da8-8fa2-28278625f280)
+<p align="center">
+   <img src="/res/splash.jpg"/>
+</p>
 
 # Details
 We will be recreating the control console for the popular Photon laser tag game. The console controls the major functionality of the game. 
@@ -13,22 +15,30 @@ We will be recreating the control console for the popular Photon laser tag game.
 4. Game loop to count score and tally up game totals.
 
 # Run Instructions
-Install all the dependencies. Run the following command in the root directory of the project:
+A Makefile is included to simplify the build process. Run the following commands in the root of the project's directory.
 
+Install the project's required dependencies:
+
+`make init`
+or
 `pip install -r requirements.txt`
-   
-Get into the src directory:
-   
-`cd src`
-   
-Run the following command:
 
-`python main.py`
+Run the main Python script:
+
+`make run`
+or
+`python src/main.py`
+
+Remove compiled bytecode files:
+
+`make clean`
+or
+`rm -rf src/__pycache__/`
 
 # Contributors:
-- Thomas Buser | tjbuser
-- Sophia Forrester | asophiaforrester
-- Cade DuPont | cadedupont
-- Grace Schmidt | GraceSchmidt1
-- Uyen Thi My Ho | uho2003
-- Vishal Jeyam | vjeyam
+- Thomas Buser   | [@tjbuser](https://github.com/tjbuser)
+- Sophia Forrester | [@asophiaforrester](https://github.com/asophiaforrester)
+- Cade DuPont | [@cadedupont](https://github.com/cadedupont)
+- Grace Schmidt | [@GraceSchmidt1](https://github.com/GraceSchmidt1)
+- Uyen Thi My Ho | [@uho2003](https://github.com/uho2003)
+- Vishal Jeyam | [@vjeyam](https://github.com/vjeyam)

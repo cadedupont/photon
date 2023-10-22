@@ -1,50 +1,44 @@
 from dotenv import load_dotenv
-from importlib import reload
-from supabase import create_client, Client
-from tkinter import messagebox
-import os
+from os import getenv
 
-# Run splash screen and player registration GUI
-import splash
-import register
-from networking import Networking
+import tkinter as tk
+import supabase
 
-# Load environment variables
+import splash_screen
+import player_entry
+
+# Create the Supabase client
 load_dotenv()
+supabase_client: supabase.Client = supabase.create_client(
+    getenv("SUPABASE_URL"),
+    getenv("SUPABASE_KEY")
+)
 
-# Create a new Supabase client
-url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
-supabase: Client = create_client(url, key)
+# Build main window, set title, make fullscreen
+root: tk.Tk = tk.Tk()
+root.title("Photon")
+root.iconbitmap("res/logo.ico")
+root.state("zoomed")
+root.configure(background="white")
 
-# Get user input from GUI
-info: dict = register.info
+# Force window to fill screen, place at top left
+width: int = root.winfo_screenwidth()
+height: int = root.winfo_screenheight()
+root.geometry(f"{width}x{height}+0+0")
 
-# Check whether user already exists in user table
-user: dict = supabase.table("players").select("*").eq("username", info["username"]).execute()
+# Bind escape key to exit
+root.bind("<Escape>", lambda event: root.destroy())
 
-# While user already exists, re-run registration GUI
-while (user.data != []):
-    # Display error message
-    messagebox.showerror("Error", "Username already exists")
+def main() -> None:
+    # Build the splash screen
+    splash: splash_screen = splash_screen.build(root)
 
-    # Re-run registration GUI
-    reload(register)
-    info: dict = register.info
-    
-    # Re-run query to check whether user already exists
-    user: dict = supabase.table("players").select("*").eq("username", info["username"]).execute()
+    # After 3 seconds, destroy the splash screen and build the player entry screen
+    root.after(3000, splash.destroy)
+    root.after(3000, player_entry.build, root, supabase_client)
 
-# Insert first name, last name, username into user table
-supabase.table("players").insert([
-    {
-        "first_name": info["first_name"],
-        "last_name": info["last_name"],
-        "username": info["username"]
-    }
-]).execute()
-messagebox.showinfo("Success", "User successfully registered!")
+    # Run the main loop
+    root.mainloop()
 
-# Broadcast equipment to code to network after user entry
-network: Networking = Networking()
-network.transmit_equipment_code(str(info["equipment_id"]))
+if __name__ == "__main__":
+    main()
