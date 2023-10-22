@@ -41,6 +41,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
         # Get the equipment ID
         equipment_id: int = int(event.widget.get())
 
+        # Check if equipment ID is between 0 and 100
         if equipment_id < 0 or equipment_id > 100:
             messagebox.showerror("Error", "Equipment ID must be between 0 and 100")
             event.widget.delete(0, tk.END)
@@ -53,9 +54,6 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
             event.widget.delete(0, tk.END)
             root.after_idle(lambda: event.widget.focus_set())
             return
-
-        # Transmit equipment ID
-        Networking().transmit_equipment_code(equipment_id)
 
     # If the entry field ID is a user ID field, query database for user with matching ID
     elif "user_id" in entry_field_id:
@@ -99,9 +97,10 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
 
         # TODO: If the user goes back and deletes the username or user ID, remove the user from the users dictionary
 
+        # Get the equipment ID entry contents
         equipment_id: int = int(builder.get_object(entry_field_id.replace("username", "equipment_id"), root).get())
 
-        # Get the user ID entry field
+        # Get the user ID entry field box (need contents along with box for refocusing)
         user_id_widget: tk.Entry = builder.get_object(entry_field_id.replace("username", "user_id"), root)
 
         # Get contents of the user ID entry field and username entry field
@@ -129,15 +128,14 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
 
 # TODO: Define on_f12 function to clear all entry fields and users dictionary
 def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict) -> None:
-
-    #Clear all entry fields
+    # Clear all entry fields
     for entry_id in entry_ids: 
         builder.get_object(entry_ids[entry_id], root).delete(0, tk.END)
 
-        #Clear users dictionary 
+        # Clear users dictionary 
         users.clear()
 
-        #Refocus the first entry field 
+        # Refocus the first entry field 
         builder.get_object("red_equipment_id_1", root).focus_set()
 
 def build(root: tk.Tk, supabase_client) -> None:
