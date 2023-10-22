@@ -7,6 +7,8 @@ import cv2
 import playsound
 import os
 
+from networking import Networking
+
 # Import winsound if on Windows
 if os.name == "nt":
     import winsound
@@ -15,14 +17,18 @@ if os.name == "nt":
 builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/play_action.ui")
 
-def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame) -> None:
+def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, network: Networking) -> None:
+    # Change contents of timer label
     timer_label.config(text=f"Game Starts In: {seconds} Seconds")
+
+    # If seconds is greater than 0, decrement seconds and call this function again after 1 second
     if seconds > 0:
         seconds -= 1
         timer_label.after(1000, update_timer, timer_label, seconds, main_frame)
     else:
+        # Destroy main frame and start game, transmitting start game code
         main_frame.destroy()
-        # TODO: Transmit start game code once countdown timer completes
+        network.transmit_start_game_code()
 
 def update_video(video_label: tk.Label, cap: cv2.VideoCapture, frame_rate: int, video_width: int, video_height: int) -> None:
     ret, frame = cap.read()
@@ -38,7 +44,7 @@ def update_video(video_label: tk.Label, cap: cv2.VideoCapture, frame_rate: int, 
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         update_video(video_label, cap, frame_rate, video_width, video_height)
 
-def build(root: tk.Tk, users: Dict) -> None:
+def build(root: tk.Tk, users: Dict, network: Networking) -> None:
     # Based on OS, play the countdown sound
     if os.name == "nt":
         winsound.PlaySound("res/countdown.wav", winsound.SND_ASYNC)
@@ -64,9 +70,8 @@ def build(root: tk.Tk, users: Dict) -> None:
     # Load the video
     cap: cv2.VideoCapture = cv2.VideoCapture("res/countdown.mp4")
     
-    # Get the video's frame rate and total frame count
+    # Get the video's frame rate
     frame_rate: int = int(cap.get(cv2.CAP_PROP_FPS))
-    total_frames: int = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     # Define the desired video size
     video_width: int = 500
@@ -80,7 +85,7 @@ def build(root: tk.Tk, users: Dict) -> None:
     seconds: int = 30
 
     # Start the countdown
-    update_timer(timer_label, seconds, main_frame)
+    update_timer(timer_label, seconds, main_frame, network)
 
     # Start displaying the video
     update_video(video_label, cap, frame_rate, video_width, video_height)

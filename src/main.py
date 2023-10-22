@@ -8,6 +8,7 @@ import supabase
 
 import splash_screen
 import player_entry
+from networking import Networking
 
 # Create the Supabase client
 load_dotenv()
@@ -38,12 +39,15 @@ def main() -> None:
         "red": {}
     }
 
+    # Create networking object
+    network: Networking = Networking()
+
     # Build the splash screen
     splash: splash_screen = splash_screen.build(root)
 
     # After 3 seconds, destroy the splash screen and build the player entry screen
     root.after(3000, splash.destroy)
-    root.after(3000, player_entry.build, root, supabase_client, users)
+    root.after(3000, player_entry.build, root, supabase_client, users, network)
 
     # Run the main loop
     root.mainloop()

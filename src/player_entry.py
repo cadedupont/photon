@@ -130,23 +130,23 @@ def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
         builder.get_object("green_equipment_id_1", root).focus_set()
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
-def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, event: tk.Event = None) -> None:
+def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking, event: tk.Event = None) -> None:
     # Remove F12 functionality
     root.unbind("<F12>")
 
     # For each equipment ID entry field, transmit the equipment ID
     for team in users:
         for equipment_id in users[team]:
-            Networking().transmit_equipment_code(equipment_id)
+            network.transmit_equipment_code(equipment_id)
     
     # Destroy main_frame
     main_frame.destroy()
 
     # Build the player action screen
     import play_action
-    play_action.build(root, users)
+    play_action.build(root, users, network)
 
-def build(root: tk.Tk, supabase_client, users: Dict) -> None:
+def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> None:
     # Place the main frame in the center of the root window
     main_frame: tk.Frame = builder.get_object("master", root)
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -175,8 +175,8 @@ def build(root: tk.Tk, supabase_client, users: Dict) -> None:
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
     root.bind("<KeyPress-F12>", lambda event: on_f12(event, root, entry_ids, users))
-    root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, event))
+    root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, network, event))
 
     # Bind continue button to F5 function for moving on to play action screen
     cont_button: tk.Button = builder.get_object("submit", main_frame)
-    cont_button.configure(command=lambda: on_f5(main_frame, root, users))
+    cont_button.configure(command=lambda: on_f5(main_frame, root, network, users))
