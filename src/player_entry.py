@@ -127,7 +127,7 @@ def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
         users.clear()
 
         # Refocus the first entry field 
-        builder.get_object("red_equipment_id_1", root).focus_set()
+        builder.get_object("green_equipment_id_1", root).focus_set()
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
 def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, event: tk.Event = None) -> None:
@@ -164,7 +164,7 @@ def build(root: tk.Tk, supabase_client, users: Dict) -> None:
         entry_ids[builder.get_object(f"green_username_{i}", green_frame).winfo_id()] = f"green_username_{i}"
 
     # Place focus on the first entry field
-    builder.get_object("red_equipment_id_1", red_frame).focus_set()
+    builder.get_object("green_equipment_id_1", red_frame).focus_set()
 
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))

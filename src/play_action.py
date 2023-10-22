@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import tkinter as tk
 import pygubu
 import cv2
+import playsound
 
 # Load the UI file and create the builder
 builder: pygubu.Builder = pygubu.Builder()
@@ -38,7 +39,8 @@ def build(root: tk.Tk, users: Dict) -> None:
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     # Get the time frame and label
-    timer_frame: tk.Frame = builder.get_object("countdown_frame", main_frame)
+    countdown_frame: tk.Frame = builder.get_object("countdown_frame", main_frame)
+    video_frame: tk.Frame = builder.get_object("video_frame", countdown_frame)
     timer_label: tk.Label = builder.get_object("countdown_label", main_frame)
 
     # For each user entry, fill in username for each team
@@ -60,11 +62,14 @@ def build(root: tk.Tk, users: Dict) -> None:
     video_height: int = 500
 
     # Make the video label
-    video_label: tk.Label = tk.Label(timer_frame)
+    video_label: tk.Label = tk.Label(video_frame)
     video_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     # Initialize the countdown time
     seconds: int = 30
+
+    # Play the countdown sound
+    playsound.playsound("res/jeopardy.mp3", block=False)
 
     # Start the countdown
     update_timer(timer_label, seconds, main_frame)
