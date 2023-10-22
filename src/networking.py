@@ -58,8 +58,8 @@ class Networking:
 
 if __name__ == "__main__":
     network_mod: Networking = Networking()
-    network_mod.transmit_end_game_code() # test end game method
     network_mod.transmit_start_game_code() # test start game method
+    network_mod.transmit_end_game_code() # test end game method
     network_mod.run()
     
 
