@@ -65,12 +65,14 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             user_id: int = int(database_response.data[0]["id"])
             username: str = database_response.data[0]["username"]
             
-            # If user already exists in the users dictionary, display an error message and refocus entry field to clear input
-            if user_id in users["green"] or user_id in users["red"]:
-                messagebox.showerror("Error", "User has already signed up for this match")
-                event.widget.delete(0, tk.END)
-                root.after_idle(lambda: event.widget.focus_set())
-                return
+            # If user has already been entered, display error message and refocus entry field to clear input
+            for team in users:
+                for equipment_id in users[team]:
+                    if user_id == users[team][equipment_id][0]:
+                        messagebox.showerror("Error", "User has already been entered")
+                        event.widget.delete(0, tk.END)
+                        root.after_idle(lambda: event.widget.focus_set())
+                        return
 
             # Add user information to the users dictionary, specifying the team
             users["green" if "green" in entry_field_id else "red"][equipment_id] = (user_id, username)
