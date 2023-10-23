@@ -122,11 +122,12 @@ def on_f12(main_frame: tk.Tk, entry_ids: Dict, users: Dict) -> None:
     for entry_id in entry_ids: 
         builder.get_object(entry_ids[entry_id], main_frame).delete(0, tk.END)
 
-        # Clear users dictionary 
-        users.clear()
+    # Refocus the first entry field 
+    builder.get_object("green_equipment_id_1", main_frame).focus_set()
 
-        # Refocus the first entry field 
-        builder.get_object("green_equipment_id_1", main_frame).focus_set()
+    # Clear the users dictionary
+    users["green"].clear()
+    users["red"].clear()
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
 def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> None:
