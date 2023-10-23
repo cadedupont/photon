@@ -67,8 +67,8 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             
             # If user has already been entered, display error message and refocus entry field to clear input
             for team in users:
-                for equipment_id in users[team]:
-                    if user_id == users[team][equipment_id][0]:
+                for eq_id in users[team]:
+                    if user_id == users[team][eq_id][0]:
                         messagebox.showerror("Error", "User has already been entered")
                         event.widget.delete(0, tk.END)
                         root.after_idle(lambda: event.widget.focus_set())
@@ -117,24 +117,23 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             root.after_idle(lambda: user_id_widget.focus_set())
             return
 
-        # If the POST request was successful, display a success message
-        messagebox.showinfo("Success", "User successfully added to the database!")
-
-def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict) -> None:
+def on_f12(main_frame: tk.Tk, entry_ids: Dict, users: Dict) -> None:
     # Clear all entry fields
     for entry_id in entry_ids: 
-        builder.get_object(entry_ids[entry_id], root).delete(0, tk.END)
+        builder.get_object(entry_ids[entry_id], main_frame).delete(0, tk.END)
 
         # Clear users dictionary 
         users.clear()
 
         # Refocus the first entry field 
-        builder.get_object("green_equipment_id_1", root).focus_set()
+        builder.get_object("green_equipment_id_1", main_frame).focus_set()
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
-def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking, event: tk.Event = None) -> None:
-    # Remove F12 functionality
-    root.unbind("<F12>")
+def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> None:
+    # Remove F5, F12, and Tab key bindings
+    root.unbind("<Tab>")
+    root.unbind("<KeyPress-F12>")
+    root.unbind("<KeyPress-F5>")
 
     # For each equipment ID entry field, transmit the equipment ID
     for team in users:
@@ -176,9 +175,9 @@ def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> Non
 
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
-    root.bind("<KeyPress-F12>", lambda event: on_f12(event, root, entry_ids, users))
-    root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, network, event))
+    root.bind("<KeyPress-F12>", lambda event: on_f12(main_frame, entry_ids, users))
+    root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, network))
 
     # Bind continue button to F5 function for moving on to play action screen
     cont_button: tk.Button = builder.get_object("submit", main_frame)
-    cont_button.configure(command=lambda: on_f5(main_frame, root, network, users))
+    cont_button.configure(command=lambda: on_f5(main_frame, root, users, network))
