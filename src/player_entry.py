@@ -172,7 +172,7 @@ def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> Non
         entry_ids[builder.get_object(f"green_username_{i}", green_frame).winfo_id()] = f"green_username_{i}"
 
     # Place focus on the first entry field
-    builder.get_object("green_equipment_id_1", red_frame).focus_set()
+    builder.get_object("green_equipment_id_1", green_frame).focus_set()
 
     # Bind keys to lambda functions
     root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
@@ -181,4 +181,4 @@ def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> Non
 
     # Bind continue button to F5 function for moving on to play action screen
     cont_button: tk.Button = builder.get_object("submit", main_frame)
-    cont_button.configure(command=lambda: on_f5(main_frame, root, users, network))
+    cont_button.configure(command=lambda: on_f5(main_frame, root, network, users))
