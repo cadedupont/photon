@@ -55,7 +55,6 @@ class Networking:
             print("Return Address: " + str(return_address))
             self.recieve_socket.sendto(str.encode("Thanks and welcome."), return_address)
 
-
 if __name__ == "__main__":
     network_mod: Networking = Networking()
     network_mod.transmit_start_game_code() # test start game method
