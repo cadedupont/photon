@@ -1,17 +1,19 @@
 from typing import Dict
 from PIL import Image, ImageTk
 
-import tkinter as tk
-import pygubu
 import cv2
-import playsound
 import os
 
-from networking import Networking
+import tkinter as tk
+import pygubu
 
-# Import winsound if on Windows
+# If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
     import winsound
+else:
+    import playsound
+
+from networking import Networking
 
 # Load the UI file and create the builder
 builder: pygubu.Builder = pygubu.Builder()

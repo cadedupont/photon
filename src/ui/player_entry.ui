@@ -88,6 +88,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_1" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -99,6 +100,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_1" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -110,6 +112,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_1" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -121,6 +124,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_2" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -132,6 +136,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_2" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -143,6 +148,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_2" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -154,6 +160,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_3" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -165,6 +172,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_3" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -176,6 +184,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_3" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -187,6 +196,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_4" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -198,6 +208,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_4" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -209,6 +220,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_4" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -220,6 +232,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_5" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -231,6 +244,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_5" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -242,6 +256,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_5" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -253,6 +268,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_6" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -264,6 +280,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_6" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -275,6 +292,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_6" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -286,6 +304,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_7" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -297,6 +316,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_7" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -308,6 +328,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_7" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -319,6 +340,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_8" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -330,6 +352,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_8" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -341,6 +364,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_8" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -352,6 +376,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_9" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -363,6 +388,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_9" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -374,6 +400,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_9" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -385,6 +412,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_10" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -396,6 +424,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_10" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -407,6 +436,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_10" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -418,6 +448,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_11" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -429,6 +460,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_11" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -440,6 +472,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_11" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -451,6 +484,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_12" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -462,6 +496,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_12" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -473,6 +508,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_12" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -484,6 +520,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_13" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -495,6 +532,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_13" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -506,6 +544,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_13" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -517,6 +556,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_14" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -528,6 +568,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_14" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -539,6 +580,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_14" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -550,6 +592,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_equipment_id_15" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -561,6 +604,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_user_id_15" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -572,6 +616,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="red_username_15" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -653,6 +698,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_1" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -663,6 +709,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_1" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -674,6 +721,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_1" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -685,6 +733,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_2" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -696,6 +745,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_2" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -707,6 +757,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_2" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -718,6 +769,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_3" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -729,6 +781,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_3" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -740,6 +793,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_3" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -751,6 +805,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_4" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -762,6 +817,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_4" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -773,6 +829,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_4" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -784,6 +841,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_5" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -795,6 +853,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_5" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -806,6 +865,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_5" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -817,6 +877,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_6" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -828,6 +889,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_6" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -839,6 +901,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_6" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -850,6 +913,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_7" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -861,6 +925,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_7" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -872,6 +937,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_7" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -883,6 +949,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_8" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -894,6 +961,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_8" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -905,6 +973,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_8" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -916,6 +985,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_9" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -927,6 +997,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_9" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -938,6 +1009,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_9" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -949,6 +1021,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_10" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -960,6 +1033,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_10" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -971,6 +1045,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_10" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -982,6 +1057,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_11" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -993,6 +1069,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_11" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -1004,6 +1081,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_11" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -1015,6 +1093,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_12" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -1026,6 +1105,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_12" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -1037,6 +1117,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_12" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -1048,6 +1129,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_13" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -1059,6 +1141,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_13" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -1070,6 +1153,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_13" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -1081,6 +1165,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_14" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -1092,6 +1177,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_14" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -1103,6 +1189,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_14" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -1114,6 +1201,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_equipment_id_15" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -1125,6 +1213,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_user_id_15" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">1</property>
@@ -1136,6 +1225,7 @@
             </child>
             <child>
               <object class="tk.Entry" id="green_username_15" named="True">
+                <property name="font">{Fixedsys} 12 {}</property>
                 <property name="width">15</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -1151,6 +1241,7 @@
     </child>
     <child>
       <object class="tk.Button" id="submit" named="True">
+        <property name="font">{Fixedsys} 12 {}</property>
         <property name="highlightbackground">#ffffff</property>
         <property name="state">normal</property>
         <property name="text" translatable="yes">Continue</property>

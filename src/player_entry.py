@@ -179,4 +179,4 @@ def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> Non
 
     # Bind continue button to F5 function for moving on to play action screen
     cont_button: tk.Button = builder.get_object("submit", main_frame)
-    cont_button.configure(command=lambda: on_f5(main_frame, root, network, users))
+    cont_button.configure(command=lambda: on_f5(main_frame, root, users, network))
