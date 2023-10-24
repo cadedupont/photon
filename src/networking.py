@@ -7,8 +7,8 @@ import socket
 # CONSTANTS
 START_GAME_CODE: int = 202
 END_GAME_CODE: int = 221
-RED_BASE_SCORED_CODE: int = 66
-GREEN_BASE_SCORED_CODE: int = 148
+RED_BASE_SCORED_CODE: int = 53
+GREEN_BASE_SCORED_CODE: int = 43
 BUFFER_SIZE: int = 1024
 GAME_TIME_SECONDS: int = 360 # Seconds
 BROADCAST_ADDRESS: str = "255.255.255.255"
@@ -37,7 +37,9 @@ class Networking:
         self.transmit_socket.sendto(str.encode(str(END_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def transmit_player_hit(self, player_code: int) -> None:
-        pass
+        # TODO: Ask about this. This represents when any player is hit their equipment ID is broadcast to the network?
+        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def red_base_scored(self) -> None:
         pass
