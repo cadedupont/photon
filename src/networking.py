@@ -7,8 +7,8 @@ import socket
 # CONSTANTS
 START_GAME_CODE: int = 202
 END_GAME_CODE: int = 221
-RED_BASE_SCORED_CODE: int = 66
-GREEN_BASE_SCORED_CODE: int = 148
+RED_BASE_SCORED_CODE: int = 53
+GREEN_BASE_SCORED_CODE: int = 43
 BUFFER_SIZE: int = 1024
 GAME_TIME_SECONDS: int = 360 # Seconds
 BROADCAST_ADDRESS: str = "255.255.255.255"
@@ -27,13 +27,19 @@ class Networking:
         self.transmit_socket.sendto(str.encode(str(equipment_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
     
     def transmit_start_game_code(self) -> None:
-        pass
+        # TODO : Eventually add error checking
+        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.transmit_socket.sendto(str.encode(str(START_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def transmit_end_game_code(self) -> None:
-        pass
+        # TODO : Eventually add error checking
+        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.transmit_socket.sendto(str.encode(str(END_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def transmit_player_hit(self, player_code: int) -> None:
-        pass
+        # TODO: Ask about this. This represents when any player is hit their equipment ID is broadcast to the network?
+        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def red_base_scored(self) -> None:
         pass
@@ -51,9 +57,10 @@ class Networking:
             print("Return Address: " + str(return_address))
             self.recieve_socket.sendto(str.encode("Thanks and welcome."), return_address)
 
-
 if __name__ == "__main__":
     network_mod: Networking = Networking()
+    network_mod.transmit_start_game_code() # test start game method
+    network_mod.transmit_end_game_code() # test end game method
     network_mod.run()
     
 

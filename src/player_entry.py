@@ -1,6 +1,6 @@
-from typing import Dict, Tuple
-from tkinter import messagebox
+from typing import Dict
 
+from tkinter import messagebox
 import tkinter as tk
 import pygubu
 
@@ -11,17 +11,9 @@ builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/player_entry.ui")
 
 database_response = None
-from typing import Dict
-
-users: Dict[str, Dict[int, Tuple[int, str]]] = {
-    "green": {},
-    "red": {}
-}
-
-def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> None:
+def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users: Dict) -> None:
     # Make database response and users dictionary global
     global database_response
-    global users
 
     # Get the entry field ID
     # If key doesn't exist, do nothing
@@ -41,6 +33,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
         # Get the equipment ID
         equipment_id: int = int(event.widget.get())
 
+        # Check if equipment ID is between 0 and 100
         if equipment_id < 0 or equipment_id > 100:
             messagebox.showerror("Error", "Equipment ID must be between 0 and 100")
             event.widget.delete(0, tk.END)
@@ -53,9 +46,6 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
             event.widget.delete(0, tk.END)
             root.after_idle(lambda: event.widget.focus_set())
             return
-
-        # Transmit equipment ID
-        Networking().transmit_equipment_code(equipment_id)
 
     # If the entry field ID is a user ID field, query database for user with matching ID
     elif "user_id" in entry_field_id:
@@ -75,12 +65,14 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
             user_id: int = int(database_response.data[0]["id"])
             username: str = database_response.data[0]["username"]
             
-            # If user already exists in the users dictionary, display an error message and refocus entry field to clear input
-            if user_id in users["green"] or user_id in users["red"]:
-                messagebox.showerror("Error", "User has already signed up for this match")
-                event.widget.delete(0, tk.END)
-                root.after_idle(lambda: event.widget.focus_set())
-                return
+            # If user has already been entered, display error message and refocus entry field to clear input
+            for team in users:
+                for eq_id in users[team]:
+                    if user_id == users[team][eq_id][0]:
+                        messagebox.showerror("Error", "User has already been entered")
+                        event.widget.delete(0, tk.END)
+                        root.after_idle(lambda: event.widget.focus_set())
+                        return
 
             # Add user information to the users dictionary, specifying the team
             users["green" if "green" in entry_field_id else "red"][equipment_id] = (user_id, username)
@@ -99,9 +91,10 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
 
         # TODO: If the user goes back and deletes the username or user ID, remove the user from the users dictionary
 
+        # Get the equipment ID entry contents
         equipment_id: int = int(builder.get_object(entry_field_id.replace("username", "equipment_id"), root).get())
 
-        # Get the user ID entry field
+        # Get the user ID entry field box (need contents along with box for refocusing)
         user_id_widget: tk.Entry = builder.get_object(entry_field_id.replace("username", "user_id"), root)
 
         # Get contents of the user ID entry field and username entry field
@@ -124,15 +117,38 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict) -> No
             root.after_idle(lambda: user_id_widget.focus_set())
             return
 
-        # If the POST request was successful, display a success message
-        messagebox.showinfo("Success", "User successfully added to the database!")
+def on_f12(main_frame: tk.Tk, entry_ids: Dict, users: Dict) -> None:
+    # Clear all entry fields
+    for entry_id in entry_ids: 
+        builder.get_object(entry_ids[entry_id], main_frame).delete(0, tk.END)
 
-# TODO: Define on_f12 function to clear all entry fields and users dictionary
-def on_f12(event: tk.Event, root: tk.Tk, entry_ids: Dict) -> None:
-    pass
+    # Refocus the first entry field 
+    builder.get_object("green_equipment_id_1", main_frame).focus_set()
 
-def build(root: tk.Tk, supabase_client) -> None:
+    # Clear the users dictionary
+    users["green"].clear()
+    users["red"].clear()
 
+# f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
+def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> None:
+    # Remove F5, F12, and Tab key bindings
+    root.unbind("<Tab>")
+    root.unbind("<KeyPress-F12>")
+    root.unbind("<KeyPress-F5>")
+
+    # For each equipment ID entry field, transmit the equipment ID
+    for team in users:
+        for equipment_id in users[team]:
+            network.transmit_equipment_code(equipment_id)
+    
+    # Destroy main_frame
+    main_frame.destroy()
+
+    # Build the player action screen
+    import play_action
+    play_action.build(root, users, network)
+
+def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> None:
     # Place the main frame in the center of the root window
     main_frame: tk.Frame = builder.get_object("master", root)
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -156,8 +172,13 @@ def build(root: tk.Tk, supabase_client) -> None:
         entry_ids[builder.get_object(f"green_username_{i}", green_frame).winfo_id()] = f"green_username_{i}"
 
     # Place focus on the first entry field
-    builder.get_object("red_equipment_id_1", red_frame).focus_set()
+    builder.get_object("green_equipment_id_1", green_frame).focus_set()
 
-    # Bind the "Tab" key to the on_tab function
-    root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids))
-    root.bind("<F12>", lambda event: on_f12(event, root, entry_ids))
+    # Bind keys to lambda functions
+    root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
+    root.bind("<KeyPress-F12>", lambda event: on_f12(main_frame, entry_ids, users))
+    root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, network))
+
+    # Bind continue button to F5 function for moving on to play action screen
+    cont_button: tk.Button = builder.get_object("submit", main_frame)
+    cont_button.configure(command=lambda: on_f5(main_frame, root, users, network))
