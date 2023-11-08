@@ -3,6 +3,7 @@
 # Purpose: Module to handle UDP networking for the Photon laser tag system communication between the control console and the packs.
 
 import socket
+import time # Remove this when done testing
 
 from game_logic import GameState
 
@@ -14,6 +15,7 @@ GREEN_BASE_SCORED_CODE: int = 43
 BUFFER_SIZE: int = 1024
 GAME_TIME_SECONDS: int = 360 # Seconds
 BROADCAST_ADDRESS: str = "255.255.255.255"
+RECIEVE_ALL_ADDRESS: str = "0.0.0.0"
 TRANSMIT_PORT: int = 7501
 RECIEVE_PORT: int = 7500
 
@@ -22,6 +24,7 @@ class Networking:
         # Using python BSD socket interface
         self.transmit_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.recieve_socket.bind((RECIEVE_ALL_ADDRESS, RECIEVE_PORT))
 
     def transmit_equipment_code(self, equipment_code: str) -> None:
         # This is using the python BSD interface. The 1 enables broadcast at the syscall level and privledged process.
@@ -43,7 +46,9 @@ class Networking:
         self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def run_game(self, current_game_state: GameState) -> None:
-        while True:
+        #TODO: This stuff about timing is only for testing. Remove this later.
+        start_time = time.time()
+        while time.time < start_time + 30:
             raw_message: str = self.recieve_socket.recvfrom(BUFFER_SIZE)
             message_components: [str] = raw_message.split(":")
             # By the design spec the messages are never more than two small integers seperated by a colon
@@ -60,19 +65,19 @@ class Networking:
                 self.transmit_player_hit(right_code)
             else:
                 print("Invalid codes: Left Code is " + str(left_code) + " Right Code is " + str(right_code))
-
-            
+           
 
 if __name__ == "__main__":
     network_mod: Networking = Networking()
+    game: GameState = GameState()
     network_mod.transmit_start_game_code() # test start game method
+    network_mod.run_game(game)
     network_mod.transmit_end_game_code() # test end game method
-    network_mod.run()
     
-
 
 # Notes:
 # Socket 7500 to broadcast, 7501 to recieve
 # Transmit formats: single int (who was hit), int 202 (start game), int 221 (game over)
 # Recieve formats: int:int (who hit who), int 53 (red base scored), int 43 (green base scored)
+# Recieving (equipment id of player transmitting:equipment id of player hit)
 # Max 15 players per team, 30 in total.

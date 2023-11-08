@@ -14,8 +14,8 @@ user = {
 
 class GameState:
     #                         Dict[str, Dict[equipment_id, tuple(user_id, username)]]
-    def __init__(self, users: Dict[str, Dict[int, tuple[int, str]]]) -> None:
-        self.users = users
+    def __init__(self) -> None:
+        self.users = {}
         self.red_team_score: int = 0
         self.green_team_score: int = 0
         self.red_base_score_valid: bool = True
@@ -23,7 +23,10 @@ class GameState:
         self.red_base_scored: bool = False
         self.green_base_scored: bool = False
 
-    def player_hit(self, equipment_hit_code: int, equipment_shooter_code: int):
+    def set_users(self, users: Dict[str, Dict[int, tuple[int, str]]]) -> None:
+        self.users = users
+
+    def player_hit(self, equipment_shooter_code: int, equipment_hit_code: int):
         pass
 
     def red_base_hit(self, equipment_shooter_code: int):
