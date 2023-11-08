@@ -4,6 +4,8 @@
 
 import socket
 
+from game_logic import GameState
+
 # CONSTANTS
 START_GAME_CODE: int = 202
 END_GAME_CODE: int = 221
@@ -37,25 +39,29 @@ class Networking:
         self.transmit_socket.sendto(str.encode(str(END_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
     def transmit_player_hit(self, player_code: int) -> None:
-        # TODO: Ask about this. This represents when any player is hit their equipment ID is broadcast to the network?
         self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
-    def red_base_scored(self) -> None:
-        pass
-
-    def green_base_scored(self) -> None:
-        pass
-
-    def player_hit(self) -> None:
-        pass
-
-    def run(self) -> None:
+    def run_game(self, current_game_state: GameState) -> None:
         while True:
-            raw_message, return_address = self.recieve_socket.recvfrom(BUFFER_SIZE)
-            print("Message: " + raw_message.decode())
-            print("Return Address: " + str(return_address))
-            self.recieve_socket.sendto(str.encode("Thanks and welcome."), return_address)
+            raw_message: str = self.recieve_socket.recvfrom(BUFFER_SIZE)
+            message_components: [str] = raw_message.split(":")
+            # By the design spec the messages are never more than two small integers seperated by a colon
+            left_code: int = int(message_components[0])
+            right_code: int = int(message_components[1])
+            if right_code == 53:
+                current_game_state.red_base_hit(left_code)
+            elif right_code == 43:
+                current_game_state.green_base_hit(left_code)
+            elif right_code != 53 and right_code != 43 and right_code <= 100:
+                # 100 was the bound mentioned in class for a reasonable limit of equipment ids
+                current_game_state.player_hit(left_code, right_code)
+                # Broadcasting back out who was hit so their pack will deactivate for the set time interval
+                self.transmit_player_hit(right_code)
+            else:
+                print("Invalid codes: Left Code is " + str(left_code) + " Right Code is " + str(right_code))
+
+            
 
 if __name__ == "__main__":
     network_mod: Networking = Networking()
@@ -68,5 +74,5 @@ if __name__ == "__main__":
 # Notes:
 # Socket 7500 to broadcast, 7501 to recieve
 # Transmit formats: single int (who was hit), int 202 (start game), int 221 (game over)
-# Recieve formats: int:int (who hit who), int 66 (red base scored), int 148 (green base scored)
+# Recieve formats: int:int (who hit who), int 53 (red base scored), int 43 (green base scored)
 # Max 15 players per team, 30 in total.
