@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 from tkinter import messagebox
 import tkinter as tk
@@ -74,8 +74,8 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
                         root.after_idle(lambda: event.widget.focus_set())
                         return
 
-            # Add user information to the users dictionary, specifying the team
-            users["green" if "green" in entry_field_id else "red"][equipment_id] = (user_id, username)
+            # Add user to dictionary, starting with score 0
+            users["green" if "green" in entry_field_id else "red"][equipment_id] = [user_id, username, 0]
 
             # Autofill the username entry field
             builder.get_object(entry_field_id.replace("user_id", "username"), root).insert(0, username)
@@ -101,8 +101,8 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
         user_id: int = int(user_id_widget.get())
         username = event.widget.get()
 
-        # Place user information in the users dictionary, specifying the team
-        users["green" if "green" in entry_field_id else "red"][equipment_id] = (user_id, username)
+        # Add user to dictionary, starting with score 0
+        users["green" if "green" in entry_field_id else "red"][equipment_id] = [user_id, username, 0]
 
         # Attempt to insert the user into the database, display an error message if the POST request fails
         try:
@@ -159,17 +159,20 @@ def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> Non
     green_frame: tk.Frame = builder.get_object("green_team", teams_frame)
 
     # Create a dictionary of process IDs and their corresponding entry field IDs
-    entry_ids: Dict = {}
-    for i in range(1, 16):
-        # Add red team entry field IDs
-        entry_ids[builder.get_object(f"red_equipment_id_{i}", red_frame).winfo_id()] = f"red_equipment_id_{i}"
-        entry_ids[builder.get_object(f"red_user_id_{i}", red_frame).winfo_id()] = f"red_user_id_{i}"
-        entry_ids[builder.get_object(f"red_username_{i}", red_frame).winfo_id()] = f"red_username_{i}"
+    entry_ids: Dict[int, str] = {}
+    fields: List[str] = {
+        "red_equipment_id_",
+        "red_user_id_",
+        "red_username_",
+        "green_equipment_id_",
+        "green_user_id_",
+        "green_username_"
+    }
 
-        # Add green team entry field IDs
-        entry_ids[builder.get_object(f"green_equipment_id_{i}", green_frame).winfo_id()] = f"green_equipment_id_{i}"
-        entry_ids[builder.get_object(f"green_user_id_{i}", green_frame).winfo_id()] = f"green_user_id_{i}"
-        entry_ids[builder.get_object(f"green_username_{i}", green_frame).winfo_id()] = f"green_username_{i}"
+    # Add each entry field ID to the dictionary of entry field IDs
+    for i in range(1, 16):
+        for field in fields:
+            entry_ids[builder.get_object(f"{field}{i}", red_frame if "red" in field else green_frame).winfo_id()] = f"{field}{i}"
 
     # Place focus on the first entry field
     builder.get_object("green_equipment_id_1", green_frame).focus_set()

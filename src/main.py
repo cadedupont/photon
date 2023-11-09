@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 from dotenv import load_dotenv
 from os import getenv
@@ -30,7 +30,7 @@ def build_root() -> tk.Tk:
     return root
 
 def destroy_root(root: tk.Tk, network: Networking) -> None:
-    # TODO: Add some code to transmit end game code and close network sockets
+    # TODO: Transmit end game code and close network sockets
 
     # Destroy the root window
     root.destroy()
@@ -44,7 +44,8 @@ def main() -> None:
     )
 
     # Declare dictionary for storing user information
-    users: Dict[str, Dict[int, tuple[int, str]]] = {
+    # Format: { team: { equipment_id: [user_id, username, score] } }
+    users: Dict[str, Dict[int, List[int, str, int]]] = {
         "green": {},
         "red": {}
     }
