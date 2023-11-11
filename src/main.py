@@ -9,6 +9,7 @@ import supabase
 import splash_screen
 import player_entry
 from networking import Networking
+from user import User
 
 def build_root() -> tk.Tk:
     # Build main window, set title, make fullscreen
@@ -44,10 +45,10 @@ def main() -> None:
     )
 
     # Declare dictionary for storing user information
-    # Format: { team: { equipment_id: [user_id, username, score] } }
-    users: Dict[str, Dict[int, List[int, str, int]]] = {
-        "green": {},
-        "red": {}
+    # Format: { team: [User, User, ...] }
+    users: Dict[str, List[User]] = {
+        "green": [],
+        "red": []
     }
 
     # Create networking object

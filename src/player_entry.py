@@ -5,6 +5,7 @@ import tkinter as tk
 import pygubu
 
 from networking import Networking
+from user import User
 
 # Load the UI file and create the builder
 builder: pygubu.Builder = pygubu.Builder()
@@ -41,8 +42,8 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             return
 
         # Check if equipment ID is already in use
-        if equipment_id in users["green"] or equipment_id in users["red"]:
-            messagebox.showerror("Error", "Equipment ID is already in use")
+        if equipment_id in [user.equipment_id for user in users["green"]] or equipment_id in [user.equipment_id for user in users["red"]]:
+            messagebox.showerror("Error", "Equipment ID has already been entered")
             event.widget.delete(0, tk.END)
             root.after_idle(lambda: event.widget.focus_set())
             return
@@ -66,16 +67,14 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             username: str = database_response.data[0]["username"]
             
             # If user has already been entered, display error message and refocus entry field to clear input
-            for team in users:
-                for eq_id in users[team]:
-                    if user_id == users[team][eq_id][0]:
-                        messagebox.showerror("Error", "User has already been entered")
-                        event.widget.delete(0, tk.END)
-                        root.after_idle(lambda: event.widget.focus_set())
-                        return
+            if user_id in [user.user_id for user in users["green"]] or user_id in [user.user_id for user in users["red"]]:
+                messagebox.showerror("Error", "User ID has already been entered")
+                event.widget.delete(0, tk.END)
+                root.after_idle(lambda: event.widget.focus_set())
+                return
 
             # Add user to dictionary, starting with score 0
-            users["green" if "green" in entry_field_id else "red"][equipment_id] = [user_id, username, 0]
+            users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username))
 
             # Autofill the username entry field
             builder.get_object(entry_field_id.replace("user_id", "username"), root).insert(0, username)
@@ -91,18 +90,29 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
 
         # TODO: If the user goes back and deletes the username or user ID, remove the user from the users dictionary
 
-        # Get the equipment ID entry contents
+        # Get equipment ID and user ID, user ID entry box for refocusing
         equipment_id: int = int(builder.get_object(entry_field_id.replace("username", "equipment_id"), root).get())
-
-        # Get the user ID entry field box (need contents along with box for refocusing)
         user_id_widget: tk.Entry = builder.get_object(entry_field_id.replace("username", "user_id"), root)
-
-        # Get contents of the user ID entry field and username entry field
         user_id: int = int(user_id_widget.get())
+
+        # Get username from entry field
         username = event.widget.get()
 
-        # Add user to dictionary, starting with score 0
-        users["green" if "green" in entry_field_id else "red"][equipment_id] = [user_id, username, 0]
+        # Throw error if username already exists in users dictionary or database
+        if username in [user.username for user in users["green"]] or username in [user.username for user in users["red"]]:
+            messagebox.showerror("Error", "Username has already been entered")
+            event.widget.delete(0, tk.END)
+            root.after_idle(lambda: event.widget.focus_set())
+            return
+        
+        if supabase_client.table("users").select("*").eq("username", username).execute().data:
+            messagebox.showerror("Error", "Username already exists in database")
+            event.widget.delete(0, tk.END)
+            root.after_idle(lambda: event.widget.focus_set())
+            return
+
+        # Add user to dictionary
+        users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username))
 
         # Attempt to insert the user into the database, display an error message if the POST request fails
         try:
@@ -138,8 +148,8 @@ def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> N
 
     # For each equipment ID entry field, transmit the equipment ID
     for team in users:
-        for equipment_id in users[team]:
-            network.transmit_equipment_code(equipment_id)
+        for user in users[team]:
+            network.transmit_equipment_code(user.equipment_id)
     
     # Destroy main_frame
     main_frame.destroy()
