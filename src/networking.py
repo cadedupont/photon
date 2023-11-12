@@ -4,6 +4,8 @@
 
 import socket
 import time
+from typing import Dict, List
+from user import User
 
 from game_logic import GameState
 
@@ -15,7 +17,7 @@ GREEN_BASE_SCORED_CODE: int = 43
 BUFFER_SIZE: int = 1024
 GAME_TIME_SECONDS: int = 360 # Seconds
 BROADCAST_ADDRESS: str = "255.255.255.255"
-RECIEVE_ALL_ADDRESS: str = "127.0.0.1"
+RECIEVE_ALL_ADDRESS: str = "0.0.0.0"
 TRANSMIT_PORT: int = 7501
 RECIEVE_PORT: int = 7500
 
@@ -103,9 +105,18 @@ class Networking:
 
 if __name__ == "__main__":
     network_mod: Networking = Networking()
-    game: GameState = GameState()
+    users: Dict[str, List[User]] = {
+        "green" : [],
+        "red" : []
+    }
+    users["green"].append(User(10, 10, "John Conner"))
+    users["green"].append(User(20, 20, "Sarah Conner"))
+    users["red"].append(User(30, 30, "James Conner"))
+    users["red"].append(User(40, 40, "Someone Conner"))
+    game: GameState = GameState(users)
+    network_mod.set_sockets()
     network_mod.transmit_start_game_code() # test start game method
-    network_mod.run_game(game)
+    network_mod.run_game(game, GAME_TIME_SECONDS)
     network_mod.transmit_end_game_code() # test end game method
     
 

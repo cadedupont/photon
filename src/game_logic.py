@@ -50,7 +50,7 @@ class GameState:
                 user.game_score += POINTS_PER_TAG
                 self.green_team_score += POINTS_PER_TAG
                 for victim_user in self.red_users:
-                    if user.equipment_id == equipment_hit_code:
+                    if victim_user.equipment_id == equipment_hit_code:
                         shot_user: User = victim_user
                 self.game_event_list.append(f"{user.username} hit {shot_user.username}")
         
@@ -61,7 +61,7 @@ class GameState:
                 user.game_score += POINTS_PER_TAG
                 self.red_team_score += POINTS_PER_TAG
                 for victim_user in self.green_users:
-                    if user.equipment_id == equipment_hit_code:
+                    if victim_user.equipment_id == equipment_hit_code:
                         shot_user: User = victim_user
                 self.game_event_list.append(f"{user.username} hit {shot_user.username}")
 
