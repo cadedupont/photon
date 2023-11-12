@@ -16,9 +16,27 @@ def update_score(users: Dict, main_frame: tk.Frame) -> None:
             builder.get_object(f"{team}_total_score", main_frame).config(text=total_score)
         main_frame.after(1000, update_score, users, main_frame)
 
+#Implementing play countdown timer for 6-minutes 
+def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> None:
+    # Update text being displayed in timer label
+    mins, secs = divmod(seconds, 60)
+    timer_label.config(text=f"Time Remaining: {mins:02d}:{secs:02d}")
+
+    # If there is still time left, recursively call this function after 1 second
+    # Otherwise, destroy countdown frame and start game
+    if seconds > 0:
+        seconds -= 1
+        timer_label.after(1000, update_timer, main_frame, timer_label, seconds)
+    else:
+        main_frame.destroy()
+
 def build(network: Networking, users: Dict, root: tk.Tk) -> None:
      # Place the main frame in the center of the root window
     main_frame: tk.Frame = builder.get_object("master", root)
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+    timer_label: tk.Label = builder.get_object("countdown_label", main_frame)
+    seconds: int = 360
 
     update_score(users, main_frame)
+    update_timer(main_frame, timer_label, seconds)
+
