@@ -38,6 +38,7 @@ class GameState:
         # If bases are scored
         self.red_base_scored: bool = False
         self.green_base_scored: bool = False
+        self.game_event_list: [str] = []
 
     def player_hit(self, equipment_shooter_code: int, equipment_hit_code: int) -> None:
         # Attributing points to a green user
@@ -46,6 +47,10 @@ class GameState:
             if user.equipment_id == equipment_shooter_code and equipment_hit_code not in self.green_user_equipment_ids:
                 user.game_score += POINTS_PER_TAG
                 self.green_team_score += POINTS_PER_TAG
+                for victim_user in self.red_users:
+                    if user.equipment_id == equipment_hit_code:
+                        shot_user: User = victim_user
+                self.game_event_list.append(f"{user.username} hit {shot_user.username}")
         
         # Attributing points to a red user
         for user in self.red_users:
@@ -53,6 +58,10 @@ class GameState:
             if user.equipment_id == equipment_shooter_code and equipment_hit_code not in self.red_user_equipment_ids:
                 user.game_score += POINTS_PER_TAG
                 self.red_team_score += POINTS_PER_TAG
+                for victim_user in self.green_users:
+                    if user.equipment_id == equipment_hit_code:
+                        shot_user: User = victim_user
+                self.game_event_list.append(f"{user.username} hit {shot_user.username}")
 
     def red_base_hit(self, equipment_shooter_code: int) -> None:
         for user in self.green_users:
@@ -60,6 +69,7 @@ class GameState:
             if user.equipment_id == equipment_shooter_code:
                 self.game_score += 100
                 self.green_team_score += 100
+                self.game_event_list.append(f"{user.username} hit red base")
 
     def green_base_hit(self, equipment_shooter_code: int) -> None:
         for user in self.red_users:
@@ -67,3 +77,4 @@ class GameState:
             if user.equipment_id == equipment_shooter_code:
                 self.game_score += 100
                 self.red_team_score += 100
+                self.game_event_list.append(f"{user.username} hit green base")
