@@ -22,9 +22,15 @@ RECIEVE_PORT: int = 7500
 class Networking:
     def __init__(self) -> bool:
         # Using python BSD socket interface
-        self.transmit_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.recieve_socket.bind((RECIEVE_ALL_ADDRESS, RECIEVE_PORT))
+        # Error Checking
+        try:
+            self.transmit_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.recieve_socket.bind((RECIEVE_ALL_ADDRESS, RECIEVE_PORT))
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
     def transmit_equipment_code(self, equipment_code: str) -> bool:
         # This is using the python BSD interface. The 1 enables broadcast at the syscall level and privledged process.
@@ -57,9 +63,15 @@ class Networking:
             print(e)
             return False
 
-    def transmit_player_hit(self, player_code: int) -> None:
-        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+    def transmit_player_hit(self, player_code: int) -> bool:
+        # Error Checking for transmitting player hit code
+        try:
+            self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
     def run_game(self, current_game_state: GameState, game_time: int) -> None:
         start_time: int = int(time.time())
