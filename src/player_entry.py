@@ -74,7 +74,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
                 return
 
             # Add user to dictionary, starting with score 0
-            users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username))
+            users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username, int(entry_field_id.split("_")[-1])))
 
             # Autofill the username entry field
             builder.get_object(entry_field_id.replace("user_id", "username"), root).insert(0, username)
@@ -112,7 +112,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             return
 
         # Add user to dictionary
-        users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username))
+        users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username, int(entry_field_id.split("_")[-1])))
 
         # Attempt to insert the user into the database, display an error message if the POST request fails
         try:
@@ -155,8 +155,8 @@ def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> N
     main_frame.destroy()
 
     # Build the player action screen
-    import play_action
-    play_action.build(root, users, network)
+    import countdown
+    countdown.build(root, users, network)
 
 def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> None:
     # Place the main frame in the center of the root window
