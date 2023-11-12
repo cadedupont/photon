@@ -2,28 +2,36 @@
 # Date Created: 15 September 2023
 # Purpose: Module to handle game state including who hit who and what bases have been scored.
 
-class Player:
-    def __init__(self, input_id: int, input_equipment_id: int) -> None:
-        self.id: int = input_id
-        self.equipment_id: int = input_equipment_id
-        self.score: int = 0
-
-    def player_hit(self, hit_by: int) -> None:
-        # TODO: Implement logic for if the player is hit
-        pass
-
-    def player_score_player(self, hit: int) -> None:
-        # TODO: Implement logic for when the player hits another player
-        pass
-
-    def get_score(self) -> int:
-        return self.score
+from typing import Dict
 
 class GameState:
     def __init__(self) -> None:
-        self.players: list[Player] = []
-        self.red_tower_scored: bool = False
-        self.green_twoer_scored: bool = False
+        self.users = {}
+        self.red_team_score: int = 0
+        self.green_team_score: int = 0
+        self.red_base_score_valid: bool = True
+        self.green_base_score_valid: bool = True
+        self.red_base_scored: bool = False
+        self.green_base_scored: bool = False
 
-    def register_player(self, player_id: int, equipment_id: int) -> None:
-        self.players.append(Player(player_id, equipment_id))
+    def set_users(self, users: Dict[str, Dict[int, tuple[int, str]]]) -> None:
+        self.users = users
+
+    def player_hit(self, equipment_shooter_code: int, equipment_hit_code: int):
+        pass
+
+    def red_base_hit(self, equipment_shooter_code: int):
+        if self.red_base_hit_valid:
+            self.red_base_hit = True
+            # TODO: Attribute points to player and team
+            self.red_base_hit_valid = False
+        else:
+            pass
+
+    def green_base_hit(self, equipment_shooter_code: int):
+        if self.green_base_hit_valid:
+            self.green_base_hit = True
+            # TODO: Attribute points to player and team
+            self.green_base_hit_valid = False
+        else:
+            pass
