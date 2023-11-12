@@ -10,6 +10,7 @@ import splash_screen
 import player_entry
 from networking import Networking
 from user import User
+from game_logic import GameState
 
 def build_root() -> tk.Tk:
     # Build main window, set title, make fullscreen
@@ -30,9 +31,7 @@ def build_root() -> tk.Tk:
     # Return the root window
     return root
 
-def destroy_root(root: tk.Tk, network: Networking) -> None:
-    # TODO: Transmit end game code and close network sockets
-
+def destroy_root(root: tk.Tk) -> None:
     # Destroy the root window
     root.destroy()
 
@@ -53,13 +52,14 @@ def main() -> None:
 
     # Create networking object
     network: Networking = Networking()
+    network.set_sockets()
 
     # Call build_root function to build the root window
     root: tk.Tk = build_root()
 
     # Bind escape key and window close button to destroy_root function
-    root.bind("<Escape>", lambda event: destroy_root(root, network))
-    root.protocol("WM_DELETE_WINDOW", lambda: destroy_root(root, network))
+    root.bind("<Escape>", lambda event: destroy_root(root))
+    root.protocol("WM_DELETE_WINDOW", lambda: destroy_root(root))
 
     # Build the splash screen
     splash: splash_screen = splash_screen.build(root)

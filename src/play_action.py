@@ -4,6 +4,8 @@ import os
 import random
 from networking import Networking
 from typing import Dict
+from game_logic import GameState
+import threading
 
 # If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
@@ -57,3 +59,11 @@ def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     update_score(users, main_frame)
     update_timer(main_frame, timer_label, seconds)
 
+    # Create game state model
+    game: GameState = GameState(users)
+
+    game_thread: threading.Thread = threading.Thread(target = network.run_game, args = [game, seconds])
+
+    game_thread.start()
+
+    # game_thread.join()
