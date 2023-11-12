@@ -4,16 +4,7 @@
 
 from typing import Dict
 
-user = {
-    "team" : "red",
-    "user_id" : 0,
-    "username" : "some_name",
-    "points" : 0,
-    "scored_base" : "red or green"
-}
-
 class GameState:
-    #                         Dict[str, Dict[equipment_id, tuple(user_id, username)]]
     def __init__(self) -> None:
         self.users = {}
         self.red_team_score: int = 0

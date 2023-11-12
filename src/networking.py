@@ -3,7 +3,7 @@
 # Purpose: Module to handle UDP networking for the Photon laser tag system communication between the control console and the packs.
 
 import socket
-import time # Remove this when done testing
+import time
 
 from game_logic import GameState
 
@@ -15,7 +15,7 @@ GREEN_BASE_SCORED_CODE: int = 43
 BUFFER_SIZE: int = 1024
 GAME_TIME_SECONDS: int = 360 # Seconds
 BROADCAST_ADDRESS: str = "255.255.255.255"
-RECIEVE_ALL_ADDRESS: str = "0.0.0.0"
+RECIEVE_ALL_ADDRESS: str = "127.0.0.1"
 TRANSMIT_PORT: int = 7501
 RECIEVE_PORT: int = 7500
 
@@ -45,12 +45,13 @@ class Networking:
         self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self.transmit_socket.sendto(str.encode(str(player_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
 
-    def run_game(self, current_game_state: GameState) -> None:
-        #TODO: This stuff about timing is only for testing. Remove this later.
-        start_time = time.time()
-        while time.time < start_time + 30:
-            raw_message: str = self.recieve_socket.recvfrom(BUFFER_SIZE)
-            message_components: [str] = raw_message.split(":")
+    def run_game(self, current_game_state: GameState, game_time: int) -> None:
+        start_time: int = int(time.time())
+        # Game time needs to be in seconds
+        while int(time.time()) < (start_time + game_time):
+            raw_message, return_address = self.recieve_socket.recvfrom(BUFFER_SIZE)
+            decoded_message: str = raw_message.decode("utf-8")
+            message_components: [str] = decoded_message.split(":")
             # By the design spec the messages are never more than two small integers seperated by a colon
             left_code: int = int(message_components[0])
             right_code: int = int(message_components[1])
@@ -63,6 +64,8 @@ class Networking:
                 current_game_state.player_hit(left_code, right_code)
                 # Broadcasting back out who was hit so their pack will deactivate for the set time interval
                 self.transmit_player_hit(right_code)
+                # TODO: Remove after debugging
+                # print("Codes Recieved: Left Code is " + str(left_code) + " Right Code is " + str(right_code))
             else:
                 print("Invalid codes: Left Code is " + str(left_code) + " Right Code is " + str(right_code))
            
@@ -74,6 +77,8 @@ if __name__ == "__main__":
     network_mod.run_game(game)
     network_mod.transmit_end_game_code() # test end game method
     
+
+# TODO: Check whether the equipment ID's are actually being transmitted correctly when they are input by the UI.
 
 # Notes:
 # Socket 7500 to broadcast, 7501 to recieve

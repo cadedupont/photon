@@ -57,6 +57,8 @@ while True:
 	# Kill thing
 	if int(input("Exit?")) == 1:
 		exit()
+	else:
+		pass
 	
 	UDPClientSocketTransmit.sendto(str.encode(str(message)), clientAddressPort)
 	# receive answer from game softare
