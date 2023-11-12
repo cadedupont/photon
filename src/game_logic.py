@@ -53,17 +53,13 @@ class GameState:
                 self.red_team_score += POINTS_PER_TAG
 
     def red_base_hit(self, equipment_shooter_code: int):
-        if self.red_base_hit_valid:
-            self.red_base_hit = True
-            # TODO: Attribute points to player and team
-            self.red_base_hit_valid = False
-        else:
-            pass
+        for user in self.green_users:
+            if user.equipment_id == equipment_shooter_code:
+                self.game_score += 100
+                self.green_team_score += 100
 
     def green_base_hit(self, equipment_shooter_code: int):
-        if self.green_base_hit_valid:
-            self.green_base_hit = True
-            # TODO: Attribute points to player and team
-            self.green_base_hit_valid = False
-        else:
-            pass
+        for user in self.red_users:
+            if user.equipment_id == equipment_shooter_code:
+                self.game_score += 100
+                self.red_team_score += 100
