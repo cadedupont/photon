@@ -5,6 +5,7 @@
 from typing import Dict, List
 from user import User
 
+
 # class User:
 #     equipment_id: int
 #     user_id: int
@@ -18,6 +19,7 @@ from user import User
 # }
 
 POINTS_PER_TAG: int = 10
+POINTS_PER_BASE_HIT: int = 100
 
 class GameState:
     def __init__(self, users_dict: Dict[str, List[User]]) -> None:
@@ -67,14 +69,14 @@ class GameState:
         for user in self.green_users:
             # Check if id matches, and then add 100 points to the green player and team
             if user.equipment_id == equipment_shooter_code:
-                self.game_score += 100
-                self.green_team_score += 100
+                user.game_score += POINTS_PER_BASE_HIT
+                self.green_team_score += POINTS_PER_BASE_HIT
                 self.game_event_list.append(f"{user.username} hit red base")
 
     def green_base_hit(self, equipment_shooter_code: int) -> None:
         for user in self.red_users:
             # Check if id matches, and then add 100 points to the red player and team
             if user.equipment_id == equipment_shooter_code:
-                self.game_score += 100
-                self.red_team_score += 100
+                user.game_score += POINTS_PER_BASE_HIT
+                self.red_team_score += POINTS_PER_BASE_HIT
                 self.game_event_list.append(f"{user.username} hit green base")
