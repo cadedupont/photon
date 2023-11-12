@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 from dotenv import load_dotenv
 from os import getenv
@@ -9,6 +9,7 @@ import supabase
 import splash_screen
 import player_entry
 from networking import Networking
+from user import User
 
 def build_root() -> tk.Tk:
     # Build main window, set title, make fullscreen
@@ -30,7 +31,7 @@ def build_root() -> tk.Tk:
     return root
 
 def destroy_root(root: tk.Tk, network: Networking) -> None:
-    # TODO: Add some code to transmit end game code and close network sockets
+    # TODO: Transmit end game code and close network sockets
 
     # Destroy the root window
     root.destroy()
@@ -44,9 +45,10 @@ def main() -> None:
     )
 
     # Declare dictionary for storing user information
-    users: Dict[str, Dict[int, tuple[int, str]]] = {
-        "green": {},
-        "red": {}
+    # Format: { team: [User, User, ...] }
+    users: Dict[str, List[User]] = {
+        "green": [],
+        "red": []
     }
 
     # Create networking object

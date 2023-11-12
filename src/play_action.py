@@ -64,8 +64,8 @@ def build(root: tk.Tk, users: Dict, network: Networking) -> None:
     # For each user entry, fill in username for each team
     for team in users:
         count: int = 1
-        for equipment_id in users[team]:
-            builder.get_object(f"{team}_username_{count}", main_frame).configure(text=users[team][equipment_id][1])
+        for user in users[team]:
+            builder.get_object(f"{team}_username_{count}", main_frame).config(text=user.username)
             count += 1
 
     # Get the time frame and label from the UI file
