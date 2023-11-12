@@ -4,14 +4,16 @@ class User:
     username: str
     game_score: int
     has_hit_base: bool
+    user_row: int 
 
     # Constructor, pass in equipment ID, user ID, and username from player entry GUI
-    def __init__(self, equipment_id: int = -1, user_id: int = -1, username: str = "NO_USERNAME") -> None:
+    def __init__(self, equipment_id: int = -1, user_id: int = -1, username: str = "NO_USERNAME", user_row: int = 0) -> None:
         self.equipment_id = equipment_id
         self.user_id = user_id
         self.username = username
         self.game_score = 0
         self.has_hit_base = False
+        self.user_row = user_row
 
     # String representation of User object
     def __str__(self) -> str:
