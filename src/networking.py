@@ -20,7 +20,10 @@ TRANSMIT_PORT: int = 7501
 RECIEVE_PORT: int = 7500
 
 class Networking:
-    def __init__(self) -> bool:
+    def __init__(self) -> None:
+        pass
+    
+    def set_sockets(self) -> bool:
         # Using python BSD socket interface
         # Error Checking
         try:
