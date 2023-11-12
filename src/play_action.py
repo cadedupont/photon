@@ -1,7 +1,15 @@
 import pygubu
 import tkinter as tk
+import os 
+import random
 from networking import Networking
 from typing import Dict
+
+# If on Windows, import winsound, else import playsound for countdown music
+if os.name == "nt":
+    import winsound
+else:
+    import playsound
 
 # Load the UI file and create the builder
 builder: pygubu.Builder = pygubu.Builder()
@@ -31,6 +39,15 @@ def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> N
         main_frame.destroy()
 
 def build(network: Networking, users: Dict, root: tk.Tk) -> None:
+    filenames = os.listdir("res/moosic")
+    file = random.choice(filenames)
+    # Based on OS, play the countdown sound
+    # Play sound asynchronously to prevent freezing
+    if os.name == "nt":
+        winsound.PlaySound("res/moosic/" + file, winsound.SND_ASYNC)
+    else:
+        playsound.playsound("res/moosic/" + file, block=False)
+
      # Place the main frame in the center of the root window
     main_frame: tk.Frame = builder.get_object("master", root)
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)

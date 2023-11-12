@@ -978,7 +978,7 @@
             <property name="text" translatable="yes">Time Remaining: </property>
             <layout manager="grid">
               <property name="column">0</property>
-              <property name="pady">30 0</property>
+              <property name="pady">28 0</property>
               <property name="row">1</property>
             </layout>
           </object>
@@ -987,9 +987,9 @@
           <object class="tk.Label" id="action_stream" named="True">
             <property name="background">#FFFFFF</property>
             <property name="font">{Fixedsys} 16 {}</property>
-            <property name="height">34</property>
+            <property name="height">31</property>
             <property name="text" translatable="yes">Scooby Doo hit Opus</property>
-            <property name="width">55</property>
+            <property name="width">40</property>
             <layout manager="grid">
               <property name="column">0</property>
               <property name="row">0</property>
