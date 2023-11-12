@@ -16,25 +16,47 @@ TRANSMIT_PORT: int = 7501
 RECIEVE_PORT: int = 7500
 
 class Networking:
-    def __init__(self) -> None:
+    def __init__(self) -> bool:
         # Using python BSD socket interface
-        self.transmit_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-    def transmit_equipment_code(self, equipment_code: str) -> None:
-        # This is using the python BSD interface. The 1 enables broadcast at the syscall level and privledged process.
-        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        self.transmit_socket.sendto(str.encode(str(equipment_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+        # Error Checking for transmiting socket and recieving socket
+        try:
+            self.transmit_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.recieve_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            return True
+        except Exception as e:
+            print(e)
+            return False
     
-    def transmit_start_game_code(self) -> None:
-        # TODO : Eventually add error checking
-        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        self.transmit_socket.sendto(str.encode(str(START_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
-
-    def transmit_end_game_code(self) -> None:
-        # TODO : Eventually add error checking
-        self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        self.transmit_socket.sendto(str.encode(str(END_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+    def transmit_equipment_code(self, equipment_code: str) -> bool:
+        # This is using the python BSD interface. The 1 enables broadcast at the syscall level and privledged process.
+        # Error Checking for transmitting equipment code
+        try:
+            self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            self.transmit_socket.sendto(str.encode(str(equipment_code)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+    
+    def transmit_start_game_code(self) -> bool:
+        # Error Checking for transmitting start game code
+        try:
+            self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            self.transmit_socket.sendto(str.encode(str(START_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+            
+    def transmit_end_game_code(self) -> bool:
+        # Error Checking for transmitting end game code
+        try:
+            self.transmit_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            self.transmit_socket.sendto(str.encode(str(END_GAME_CODE)), (BROADCAST_ADDRESS, TRANSMIT_PORT))
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
     def transmit_player_hit(self, player_code: int) -> None:
         # TODO: Ask about this. This represents when any player is hit their equipment ID is broadcast to the network?
