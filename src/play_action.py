@@ -8,19 +8,19 @@ builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/play_action.ui")
 
 def update_score(users: Dict, main_frame: tk.Frame) -> None:
-        for team in users:
-            for user in users[team]:
-                builder.get_object(f"{team}_username_{user.user_row}", main_frame).config(text=user.username)
-                builder.get_object(f"{team}_score_{user.user_row}", main_frame).config(text=user.game_score)
-            total_score = sum([user.game_score for user in users[team]])
-            builder.get_object(f"{team}_total_score", main_frame).config(text=total_score)
-        main_frame.after(1000, update_score, users, main_frame)
+    for team in users:
+        for user in users[team]:
+            builder.get_object(f"{team}_username_{user.user_row}", main_frame).config(text=user.username)
+            builder.get_object(f"{team}_score_{user.user_row}", main_frame).config(text=user.game_score)
+        total_score = sum([user.game_score for user in users[team]])
+        builder.get_object(f"{team}_total_score", main_frame).config(text=total_score)
+    main_frame.after(1000, update_score, users, main_frame)
 
 #Implementing play countdown timer for 6-minutes 
 def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> None:
     # Update text being displayed in timer label
     mins, secs = divmod(seconds, 60)
-    timer_label.config(text=f"Time Remaining: {mins:02d}:{secs:02d}")
+    timer_label.config(text=f"Time Remaining: {mins:01d}:{secs:02d}")
 
     # If there is still time left, recursively call this function after 1 second
     # Otherwise, destroy countdown frame and start game

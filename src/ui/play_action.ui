@@ -22,7 +22,7 @@
         <child>
           <object class="tk.Label" id="red_team_label" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 20 {}</property>
+            <property name="font">{Fixedsys} 20 {underline}</property>
             <property name="foreground">#ffffff</property>
             <property name="pady">10</property>
             <property name="relief">flat</property>
@@ -37,7 +37,7 @@
         <child>
           <object class="tk.Label" id="red_username_1" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -51,7 +51,7 @@
         <child>
           <object class="tk.Label" id="red_username_2" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -65,7 +65,7 @@
         <child>
           <object class="tk.Label" id="red_username_3" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -79,7 +79,7 @@
         <child>
           <object class="tk.Label" id="red_username_4" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -93,7 +93,7 @@
         <child>
           <object class="tk.Label" id="red_username_5" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -107,7 +107,7 @@
         <child>
           <object class="tk.Label" id="red_username_6" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -121,7 +121,7 @@
         <child>
           <object class="tk.Label" id="red_username_7" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -135,7 +135,7 @@
         <child>
           <object class="tk.Label" id="red_username_8" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -149,7 +149,7 @@
         <child>
           <object class="tk.Label" id="red_username_9" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -163,7 +163,7 @@
         <child>
           <object class="tk.Label" id="red_username_10" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -177,7 +177,7 @@
         <child>
           <object class="tk.Label" id="red_username_11" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -191,7 +191,7 @@
         <child>
           <object class="tk.Label" id="red_username_12" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -205,7 +205,7 @@
         <child>
           <object class="tk.Label" id="red_username_13" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -219,7 +219,7 @@
         <child>
           <object class="tk.Label" id="red_username_14" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -233,7 +233,7 @@
         <child>
           <object class="tk.Label" id="red_username_15" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -247,7 +247,7 @@
         <child>
           <object class="tk.Label" id="red_score_1" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -261,7 +261,7 @@
         <child>
           <object class="tk.Label" id="red_score_2" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -275,7 +275,7 @@
         <child>
           <object class="tk.Label" id="red_score_3" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -289,7 +289,7 @@
         <child>
           <object class="tk.Label" id="red_score_4" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -303,7 +303,7 @@
         <child>
           <object class="tk.Label" id="red_score_5" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -317,7 +317,7 @@
         <child>
           <object class="tk.Label" id="red_score_6" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -331,7 +331,7 @@
         <child>
           <object class="tk.Label" id="red_score_7" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -345,7 +345,7 @@
         <child>
           <object class="tk.Label" id="red_score_8" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -359,7 +359,7 @@
         <child>
           <object class="tk.Label" id="red_score_9" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -373,7 +373,7 @@
         <child>
           <object class="tk.Label" id="red_score_10" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -387,7 +387,7 @@
         <child>
           <object class="tk.Label" id="red_score_11" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -401,7 +401,7 @@
         <child>
           <object class="tk.Label" id="red_score_12" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -415,7 +415,7 @@
         <child>
           <object class="tk.Label" id="red_score_13" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -429,7 +429,7 @@
         <child>
           <object class="tk.Label" id="red_score_14" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -443,7 +443,7 @@
         <child>
           <object class="tk.Label" id="red_score_15" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -457,11 +457,11 @@
         <child>
           <object class="tk.Label" id="red_total_score" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
-              <property name="column">3</property>
+              <property name="column">4</property>
               <property name="padx">5</property>
               <property name="pady">5 15</property>
               <property name="row">18</property>
@@ -471,12 +471,12 @@
         <child>
           <object class="tk.Label" id="red_total_label" named="True">
             <property name="background">#cc4b56</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 20 {underline}</property>
             <property name="foreground">#ffffff</property>
             <property name="text" translatable="yes">Total Score:</property>
             <property name="width">15</property>
             <layout manager="grid">
-              <property name="column">3</property>
+              <property name="column">4</property>
               <property name="padx">5</property>
               <property name="pady">5 5</property>
               <property name="row">17</property>
@@ -489,7 +489,7 @@
       <object class="tk.Frame" id="green_team" named="True">
         <property name="background">#4aa375</property>
         <property name="height">500</property>
-        <property name="width">500</property>
+        <property name="width">300</property>
         <layout manager="grid">
           <property name="column">0</property>
           <property name="padx">5</property>
@@ -499,7 +499,7 @@
         <child>
           <object class="tk.Label" id="green_team_label" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 20 {}</property>
+            <property name="font">{Fixedsys} 20 {underline}</property>
             <property name="foreground">#ffffff</property>
             <property name="pady">10</property>
             <property name="relief">flat</property>
@@ -514,7 +514,7 @@
         <child>
           <object class="tk.Label" id="green_username_1" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -528,7 +528,7 @@
         <child>
           <object class="tk.Label" id="green_username_2" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -542,7 +542,7 @@
         <child>
           <object class="tk.Label" id="green_username_3" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -556,7 +556,7 @@
         <child>
           <object class="tk.Label" id="green_username_4" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -570,7 +570,7 @@
         <child>
           <object class="tk.Label" id="green_username_5" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -584,7 +584,7 @@
         <child>
           <object class="tk.Label" id="green_username_6" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -598,7 +598,7 @@
         <child>
           <object class="tk.Label" id="green_username_7" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -612,7 +612,7 @@
         <child>
           <object class="tk.Label" id="green_username_8" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -626,7 +626,7 @@
         <child>
           <object class="tk.Label" id="green_username_9" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -640,7 +640,7 @@
         <child>
           <object class="tk.Label" id="green_username_10" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -654,7 +654,7 @@
         <child>
           <object class="tk.Label" id="green_username_11" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -668,7 +668,7 @@
         <child>
           <object class="tk.Label" id="green_username_12" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -682,7 +682,7 @@
         <child>
           <object class="tk.Label" id="green_username_13" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -696,7 +696,7 @@
         <child>
           <object class="tk.Label" id="green_username_14" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -710,7 +710,7 @@
         <child>
           <object class="tk.Label" id="green_username_15" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -724,7 +724,7 @@
         <child>
           <object class="tk.Label" id="green_score_1" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -738,7 +738,7 @@
         <child>
           <object class="tk.Label" id="green_score_2" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -752,7 +752,7 @@
         <child>
           <object class="tk.Label" id="green_score_3" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -766,7 +766,7 @@
         <child>
           <object class="tk.Label" id="green_score_4" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -780,7 +780,7 @@
         <child>
           <object class="tk.Label" id="green_score_5" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -794,7 +794,7 @@
         <child>
           <object class="tk.Label" id="green_score_6" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -808,7 +808,7 @@
         <child>
           <object class="tk.Label" id="green_score_7" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -822,7 +822,7 @@
         <child>
           <object class="tk.Label" id="green_score_8" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -836,7 +836,7 @@
         <child>
           <object class="tk.Label" id="green_score_9" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -850,7 +850,7 @@
         <child>
           <object class="tk.Label" id="green_score_10" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -864,7 +864,7 @@
         <child>
           <object class="tk.Label" id="green_score_11" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -878,7 +878,7 @@
         <child>
           <object class="tk.Label" id="green_score_12" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -892,7 +892,7 @@
         <child>
           <object class="tk.Label" id="green_score_13" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -906,7 +906,7 @@
         <child>
           <object class="tk.Label" id="green_score_14" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -920,7 +920,7 @@
         <child>
           <object class="tk.Label" id="green_score_15" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
@@ -934,11 +934,11 @@
         <child>
           <object class="tk.Label" id="green_total_score" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 16 {}</property>
             <property name="foreground">#ffffff</property>
             <property name="width">15</property>
             <layout manager="grid">
-              <property name="column">3</property>
+              <property name="column">4</property>
               <property name="padx">5</property>
               <property name="pady">5 15</property>
               <property name="row">18</property>
@@ -948,12 +948,12 @@
         <child>
           <object class="tk.Label" id="green_total_label" named="True">
             <property name="background">#4aa375</property>
-            <property name="font">{Fixedsys} 12 {}</property>
+            <property name="font">{Fixedsys} 20 {underline}</property>
             <property name="foreground">#ffffff</property>
             <property name="text" translatable="yes">Total Score:</property>
             <property name="width">15</property>
             <layout manager="grid">
-              <property name="column">3</property>
+              <property name="column">4</property>
               <property name="padx">5</property>
               <property name="pady">5 5</property>
               <property name="row">17</property>
@@ -963,7 +963,7 @@
       </object>
     </child>
     <child>
-      <object class="tk.Frame" id="countdown_frame" named="True">
+      <object class="tk.Frame" id="middle_frame" named="True">
         <property name="background">#ffffff</property>
         <property name="height">500</property>
         <property name="width">500</property>
@@ -972,22 +972,27 @@
           <property name="row">0</property>
         </layout>
         <child>
-          <object class="tk.Frame" id="video_frame" named="True">
+          <object class="tk.Label" id="countdown_label" named="True">
             <property name="background">#ffffff</property>
-            <property name="height">500</property>
-            <property name="width">500</property>
-            <layout manager="pack">
-              <property name="side">top</property>
+            <property name="font">{Fixedsys} 20 {underline}</property>
+            <property name="text" translatable="yes">Time Remaining: </property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="pady">30 0</property>
+              <property name="row">1</property>
             </layout>
           </object>
         </child>
         <child>
-          <object class="tk.Label" id="countdown_label" named="True">
-            <property name="background">#ffffff</property>
-            <property name="font">{Fixedsys} 20 {}</property>
-            <property name="text" translatable="yes">Time Remaining: </property>
-            <layout manager="pack">
-              <property name="pady">20 0</property>
+          <object class="tk.Label" id="action_stream" named="True">
+            <property name="background">#FFFFFF</property>
+            <property name="font">{Fixedsys} 16 {}</property>
+            <property name="height">34</property>
+            <property name="text" translatable="yes">Scooby Doo hit Opus</property>
+            <property name="width">55</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">0</property>
             </layout>
           </object>
         </child>
