@@ -19,7 +19,7 @@ from networking import Networking
 builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/countdown.ui")
 
-def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, network: Networking, users: Dict) -> None:
+def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, network: Networking, users: Dict, root: tk.Tk) -> None:
     # Update text being displayed in timer label
     timer_label.config(text=f"Game Starts In: {seconds} Seconds")
 
@@ -27,14 +27,14 @@ def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, netw
     # Otherwise, destroy countdown frame and start game
     if seconds > 0:
         seconds -= 1
-        timer_label.after(1000, update_timer, timer_label, seconds, main_frame, network)
+        timer_label.after(1000, update_timer, timer_label, seconds, main_frame, network, users, root)
     else:
         # Destroy main frame and start game, transmitting start game code
         main_frame.destroy()
         network.transmit_start_game_code()
 
         import play_action 
-        play_action.build(network, users)
+        play_action.build(network, users, root)
 
 def update_video(video_label: tk.Label, cap: cv2.VideoCapture, frame_rate: int, video_width: int, video_height: int) -> None:
     # Read the next frame from the video, resize it, and convert it to PhotoImage for placing in the label
@@ -85,10 +85,10 @@ def build(root: tk.Tk, users: Dict, network: Networking) -> None:
     frame_rate: int = int(cap.get(cv2.CAP_PROP_FPS))
     video_width: int = 500
     video_height: int = 500
-    seconds: int = 30
+    seconds: int = 2
 
     # Start the countdown
-    update_timer(timer_label, seconds, main_frame, network, users)
+    update_timer(timer_label, seconds, main_frame, network, users, root)
 
     # Start displaying the video
     update_video(video_label, cap, frame_rate, video_width, video_height)

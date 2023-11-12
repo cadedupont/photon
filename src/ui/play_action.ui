@@ -463,7 +463,7 @@
             <layout manager="grid">
               <property name="column">3</property>
               <property name="padx">5</property>
-              <property name="pady">25 15</property>
+              <property name="pady">5 15</property>
               <property name="row">18</property>
             </layout>
           </object>
@@ -478,7 +478,7 @@
             <layout manager="grid">
               <property name="column">3</property>
               <property name="padx">5</property>
-              <property name="pady">25 15</property>
+              <property name="pady">5 5</property>
               <property name="row">17</property>
             </layout>
           </object>
@@ -940,7 +940,7 @@
             <layout manager="grid">
               <property name="column">3</property>
               <property name="padx">5</property>
-              <property name="pady">25 15</property>
+              <property name="pady">5 15</property>
               <property name="row">18</property>
             </layout>
           </object>
@@ -955,7 +955,7 @@
             <layout manager="grid">
               <property name="column">3</property>
               <property name="padx">5</property>
-              <property name="pady">5 15</property>
+              <property name="pady">5 5</property>
               <property name="row">17</property>
             </layout>
           </object>
