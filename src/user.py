@@ -1,14 +1,14 @@
 class User:
+    row: int 
     equipment_id: int
     user_id: int
     username: str
     game_score: int
     has_hit_base: bool
-    user_row: int 
-
+    
     # Passing in row of entry from GUI, equipment ID, user ID, and username
-    def __init__(self, user_row: int = -1, equipment_id: int = -1, user_id: int = -1, username: str = "NO_USERNAME",) -> None:
-        self.user_row = user_row
+    def __init__(self, row, equipment_id, user_id, username) -> None:
+        self.row = row
         self.equipment_id = equipment_id
         self.user_id = user_id
         self.username = username

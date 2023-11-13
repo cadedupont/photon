@@ -496,7 +496,7 @@
         <child>
           <object class="tk.Frame" id="video_frame" named="True">
             <property name="background">#ffffff</property>
-            <property name="height">500</property>
+            <property name="height">465</property>
             <property name="width">500</property>
             <layout manager="pack">
               <property name="side">top</property>
@@ -507,7 +507,7 @@
           <object class="tk.Label" id="countdown_label" named="True">
             <property name="background">#ffffff</property>
             <property name="font">{Fixedsys} 20 {underline}</property>
-            <property name="text" translatable="yes">Time Remaining: </property>
+            <property name="text" translatable="yes">Time Remaining:</property>
             <layout manager="pack">
               <property name="pady">20 0</property>
             </layout>
