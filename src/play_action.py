@@ -21,9 +21,23 @@ builder.add_from_file("src/ui/play_action.ui")
 def update_stream(game: GameState, action_stream: tk.Frame) -> None:
     # Add scroll effect to action stream with game.game_event_list queue
     if len(game.game_event_list) > 0:
-        # Create new label for next event
-        new_event: tk.Label = tk.Label(action_stream, text=str(game.game_event_list.pop()), font=("Fixedsys", 16), bg="#FFFFFF")
-        new_event.pack(side=tk.TOP, fill=tk.X)
+        # Get the last event from the queue along with player name
+        event: str = game.game_event_list.pop()
+        player_name: str = event.split("hit", 1)[0].strip()
+
+        # Create label for event and add to action stream
+        event_label: tk.Label = tk.Label(action_stream, text=event, font=("Fixedsys", 16), bg="#FFFFFF")
+        event_label.pack(side=tk.TOP, fill=tk.X)
+
+        # Add B to player name if they hit a base
+        if "hit green base" in event:
+            for user in game.red_users:
+                if user.username == player_name:
+                    user.username = "B: " + user.username
+        elif "hit red base" in event:
+            for user in game.green_users:
+                if user.username == player_name:
+                    user.username = "B: " + user.username
         
         # Remove the last event from the bottom of the action stream
         if len(action_stream.winfo_children()) > 5:
