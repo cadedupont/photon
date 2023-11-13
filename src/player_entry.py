@@ -13,7 +13,7 @@ builder.add_from_file("src/ui/player_entry.ui")
 
 database_response = None
 def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users: Dict) -> None:
-    # Make database response and users dictionary global
+    # Make database response global for remembering previous on_tab call
     global database_response
 
     # Get the entry field ID
@@ -74,7 +74,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
                 return
 
             # Add user to dictionary, starting with score 0
-            users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username, int(entry_field_id.split("_")[-1])))
+            users["green" if "green" in entry_field_id else "red"].append(User(int(entry_field_id.split("_")[-1]), equipment_id, user_id, username))
 
             # Autofill the username entry field
             builder.get_object(entry_field_id.replace("user_id", "username"), root).insert(0, username)
@@ -112,7 +112,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             return
 
         # Add user to dictionary
-        users["green" if "green" in entry_field_id else "red"].append(User(equipment_id, user_id, username, int(entry_field_id.split("_")[-1])))
+        users["green" if "green" in entry_field_id else "red"].append(User(int(entry_field_id.split("_")[-1], equipment_id, user_id, username)))
 
         # Attempt to insert the user into the database, display an error message if the POST request fails
         try:

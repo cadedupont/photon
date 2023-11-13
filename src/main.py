@@ -1,10 +1,13 @@
 from typing import Dict, List
-
 from dotenv import load_dotenv
-from os import getenv
-
+import os
 import tkinter as tk
 import supabase
+
+if os.name == "nt":
+    import winsound
+else:
+    import playsound
 
 import splash_screen
 import player_entry
@@ -31,7 +34,16 @@ def build_root() -> tk.Tk:
     # Return the root window
     return root
 
-def destroy_root(root: tk.Tk) -> None:
+def destroy_root(root: tk.Tk, network: Networking) -> None:
+    # Stop sounds from playing
+    if os.name == "nt":
+        winsound.PlaySound(None, winsound.SND_ASYNC)
+    else:
+        playsound.playsound(None, block=False)
+
+    # Close network sockets
+    network.close_sockets()
+
     # Destroy the root window
     root.destroy()
 
@@ -39,8 +51,8 @@ def main() -> None:
     # Create the Supabase client
     load_dotenv()
     supabase_client: supabase.Client = supabase.create_client(
-        getenv("SUPABASE_URL"),
-        getenv("SUPABASE_KEY")
+        os.getenv("SUPABASE_URL"),
+        os.getenv("SUPABASE_KEY")
     )
 
     # Declare dictionary for storing user information
@@ -58,8 +70,8 @@ def main() -> None:
     root: tk.Tk = build_root()
 
     # Bind escape key and window close button to destroy_root function
-    root.bind("<Escape>", lambda event: destroy_root(root))
-    root.protocol("WM_DELETE_WINDOW", lambda: destroy_root(root))
+    root.bind("<Escape>", lambda event: destroy_root(root, network))
+    root.protocol("WM_DELETE_WINDOW", lambda: destroy_root(root, network))
 
     # Build the splash screen
     splash: splash_screen = splash_screen.build(root)
