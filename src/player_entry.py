@@ -112,7 +112,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             return
 
         # Add user to dictionary
-        users["green" if "green" in entry_field_id else "red"].append(User(int(entry_field_id.split("_")[-1], equipment_id, user_id, username)))
+        users["green" if "green" in entry_field_id else "red"].append(User(int(entry_field_id.split("_")[-1]), equipment_id, user_id, username))
 
         # Attempt to insert the user into the database, display an error message if the POST request fails
         try:

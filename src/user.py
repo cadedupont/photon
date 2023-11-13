@@ -6,8 +6,8 @@ class User:
     has_hit_base: bool
     user_row: int 
 
-    # Constructor, pass in equipment ID, user ID, and username from player entry GUI
-    def __init__(self, user_row: int = 0, equipment_id: int = -1, user_id: int = -1, username: str = "NO_USERNAME",) -> None:
+    # Passing in row of entry from GUI, equipment ID, user ID, and username
+    def __init__(self, user_row: int = -1, equipment_id: int = -1, user_id: int = -1, username: str = "NO_USERNAME",) -> None:
         self.user_row = user_row
         self.equipment_id = equipment_id
         self.user_id = user_id

@@ -35,11 +35,9 @@ def build_root() -> tk.Tk:
     return root
 
 def destroy_root(root: tk.Tk, network: Networking) -> None:
-    # Stop sounds from playing
+    # Stop sounds from playing if on Windows
     if os.name == "nt":
         winsound.PlaySound(None, winsound.SND_ASYNC)
-    else:
-        playsound.playsound(None, block=False)
 
     # Close network sockets
     network.close_sockets()

@@ -119,10 +119,10 @@ if __name__ == "__main__":
         "green" : [],
         "red" : []
     }
-    users["green"].append(User(10, 10, "John Conner"))
-    users["green"].append(User(20, 20, "Sarah Conner"))
-    users["red"].append(User(30, 30, "James Conner"))
-    users["red"].append(User(40, 40, "Someone Conner"))
+    users["green"].append(User(1, 10, 10, "John Conner"))
+    users["green"].append(User(2, 20, 20, "Sarah Conner"))
+    users["red"].append(User(3, 30, 30, "James Conner"))
+    users["red"].append(User(4, 40, 40, "Someone Conner"))
     game: GameState = GameState(users)
     network_mod.set_sockets()
     network_mod.transmit_start_game_code() # test start game method
