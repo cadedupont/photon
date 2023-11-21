@@ -28,7 +28,22 @@ def destroy_current_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network
     # Destroy the main frame
     main_frame.destroy()
 
-    # TODO: End networking thread
+    # Stop playing game music
+    if os.name == "nt":
+        winsound.PlaySound(None, winsound.SND_ASYNC)
+    else:
+        playsound.playsound(None, block=False)
+
+    # Create label for displaying winning team
+    winner: str
+    if game.green_team_score > game.red_team_score:
+        winner = "Green Team Wins!"
+    elif game.red_team_score > game.green_team_score:
+        winner = "Red Team Wins!"
+    else:
+        winner = "Tie Game!"
+    winner_label: tk.Label = tk.Label(root, text=winner, font=("Fixedsys", 20), bg="#FFFFFF")
+    winner_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     # Clear the user dictionary
     users["red"].clear()
@@ -37,12 +52,11 @@ def destroy_current_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network
     # Destroy game object
     del game
 
-    # Place button in center of root window
+    # Place restart game and end game buttons
     restart_game_button: tk.Button = tk.Button(root, text="Restart Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: build_new_game(root, users, network))
-    restart_game_button.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
-
+    restart_game_button.place(relx=0.5, rely=0.55, anchor=tk.CENTER)
     end_game_button: tk.Button = tk.Button(root, text="End Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: destroy_root(root, network))
-    end_game_button.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
+    end_game_button.place(relx=0.5, rely=0.60, anchor=tk.CENTER)
 
 def update_stream(game: GameState, action_stream: tk.Frame) -> None:
     # Add scroll effect to action stream with game.game_event_list queue
@@ -136,4 +150,3 @@ def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     # Start thread for UDP listening
     game_thread: threading.Thread = threading.Thread(target=network.run_game, args=(game,), daemon = True)
     game_thread.start()
-    # game_thread.join()
