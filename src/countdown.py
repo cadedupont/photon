@@ -15,10 +15,6 @@ else:
 
 from networking import Networking
 
-# Load the UI file and create the builder
-builder: pygubu.Builder = pygubu.Builder()
-builder.add_from_file("src/ui/countdown.ui")
-
 def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, network: Networking, users: Dict, root: tk.Tk) -> None:
     # Update text being displayed in timer label
     timer_label.config(text=f"Game Starts In: {seconds} Seconds")
@@ -53,6 +49,10 @@ def update_video(video_label: tk.Label, cap: cv2.VideoCapture, frame_rate: int, 
         update_video(video_label, cap, frame_rate, video_width, video_height)
 
 def build(root: tk.Tk, users: Dict, network: Networking) -> None:
+    # Load the UI file and create the builder
+    builder: pygubu.Builder = pygubu.Builder()
+    builder.add_from_file("src/ui/countdown.ui")
+
     # Based on OS, play the countdown sound
     # Play sound asynchronously to prevent freezing
     if os.name == "nt":
