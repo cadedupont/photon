@@ -1,15 +1,19 @@
 from typing import Dict, List
-
 from dotenv import load_dotenv
-from os import getenv
-
+import os
 import tkinter as tk
 import supabase
+
+if os.name == "nt":
+    import winsound
+else:
+    import playsound
 
 import splash_screen
 import player_entry
 from networking import Networking
 from user import User
+from game_logic import GameState
 
 def build_root() -> tk.Tk:
     # Build main window, set title, make fullscreen
@@ -31,7 +35,12 @@ def build_root() -> tk.Tk:
     return root
 
 def destroy_root(root: tk.Tk, network: Networking) -> None:
-    # TODO: Transmit end game code and close network sockets
+    # Stop sounds from playing if on Windows
+    if os.name == "nt":
+        winsound.PlaySound(None, winsound.SND_ASYNC)
+
+    # Close network sockets
+    network.close_sockets()
 
     # Destroy the root window
     root.destroy()
@@ -40,8 +49,8 @@ def main() -> None:
     # Create the Supabase client
     load_dotenv()
     supabase_client: supabase.Client = supabase.create_client(
-        getenv("SUPABASE_URL"),
-        getenv("SUPABASE_KEY")
+        os.getenv("SUPABASE_URL"),
+        os.getenv("SUPABASE_KEY")
     )
 
     # Declare dictionary for storing user information
@@ -53,6 +62,7 @@ def main() -> None:
 
     # Create networking object
     network: Networking = Networking()
+    network.set_sockets()
 
     # Call build_root function to build the root window
     root: tk.Tk = build_root()

@@ -975,7 +975,7 @@
           <object class="tk.Label" id="countdown_label" named="True">
             <property name="background">#ffffff</property>
             <property name="font">{Fixedsys} 20 {underline}</property>
-            <property name="text" translatable="yes">Time Remaining: </property>
+            <property name="text" translatable="yes">Time Remaining:</property>
             <layout manager="grid">
               <property name="column">0</property>
               <property name="pady">28 0</property>
@@ -984,12 +984,10 @@
           </object>
         </child>
         <child>
-          <object class="tk.Label" id="action_stream" named="True">
+          <object class="tk.Frame" id="action_stream_frame" named="True">
             <property name="background">#FFFFFF</property>
-            <property name="font">{Fixedsys} 16 {}</property>
-            <property name="height">31</property>
-            <property name="text" translatable="yes">Scooby Doo hit Opus</property>
-            <property name="width">40</property>
+            <property name="height">550</property>
+            <property name="width">400</property>
             <layout manager="grid">
               <property name="column">0</property>
               <property name="row">0</property>
