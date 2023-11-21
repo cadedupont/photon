@@ -7,6 +7,8 @@ from typing import Dict
 
 from networking import Networking
 from game_logic import GameState
+from player_entry import build
+from main import destroy_root
 
 # If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
@@ -17,6 +19,21 @@ else:
 # Load the UI file and create the builder
 builder: pygubu.Builder = pygubu.Builder()
 builder.add_from_file("src/ui/play_action.ui")
+
+def build_end_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network: Networking, game: GameState) -> None:
+    # Destroy the main frame
+    main_frame.destroy()
+
+    # Clear the user dictionary
+    users["red"].clear()
+    users["green"].clear()
+
+    # Destroy game object
+    del game
+
+    # Place button in center of root window
+    restart_game_button: tk.Button = tk.Button(root, text="Restart Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: build(root, users, network))
+    end_game_button: tk.Button = tk.Button(root, text="End Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: destroy_root(root, network))
 
 def update_stream(game: GameState, action_stream: tk.Frame) -> None:
     # Add scroll effect to action stream with game.game_event_list queue
@@ -63,7 +80,7 @@ def update_score(game: GameState, main_frame: tk.Frame) -> None:
     main_frame.after(1000, update_score, game, main_frame)
 
 # Implementing play countdown timer for 6-minutes 
-def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> None:
+def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int, root: tk.Tk, users: Dict, network: Networking, game: GameState) -> None:
     # Update text being displayed in timer label
     mins, secs = divmod(seconds, 60)
     timer_label.config(text=f"Time Remaining: {mins:01d}:{secs:02d}")
@@ -71,9 +88,9 @@ def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> N
     # Continue counting down, destroy main frame when timer reaches 0
     if seconds > 0:
         seconds -= 1
-        timer_label.after(1000, update_timer, main_frame, timer_label, seconds)
+        timer_label.after(1000, update_timer, main_frame, timer_label, seconds, root, users, network, game)
     else:
-        main_frame.destroy()
+        build_end_game(root, main_frame, users, network, game)
 
 def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     # Select random game music file
@@ -101,7 +118,7 @@ def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     # Update score labels, timer, and action stream
     update_score(game, main_frame)
     update_stream(game, action_stream)
-    update_timer(main_frame, timer_label, seconds=360)
+    update_timer(main_frame, timer_label, 5, root, users, network, game)
 
     # Start thread for UDP listening
     game_thread: threading.Thread = threading.Thread(target=network.run_game, args=(game,), daemon = True)
