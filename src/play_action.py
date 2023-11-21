@@ -104,6 +104,6 @@ def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     update_timer(main_frame, timer_label, seconds=360)
 
     # Start thread for UDP listening
-    game_thread: threading.Thread = threading.Thread(target=network.run_game, args=(game,))
+    game_thread: threading.Thread = threading.Thread(target=network.run_game, args=(game,), daemon = True)
     game_thread.start()
     # game_thread.join()
