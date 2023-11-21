@@ -112,6 +112,8 @@ class Networking:
             else:
                 print("Invalid codes: Left Code is " + str(left_code) + " Right Code is " + str(right_code))
         self.transmit_end_game_code()
+        self.transmit_end_game_code()
+        self.transmit_end_game_code()
            
 
 if __name__ == "__main__":

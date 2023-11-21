@@ -56,7 +56,7 @@ def destroy_current_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network
     restart_game_button: tk.Button = tk.Button(root, text="Restart Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: build_new_game(root, users, network))
     restart_game_button.place(relx=0.5, rely=0.55, anchor=tk.CENTER)
     end_game_button: tk.Button = tk.Button(root, text="End Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: destroy_root(root, network))
-    end_game_button.place(relx=0.5, rely=0.60, anchor=tk.CENTER)
+    end_game_button.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
 
 def update_stream(game: GameState, action_stream: tk.Frame) -> None:
     # Add scroll effect to action stream with game.game_event_list queue
@@ -80,7 +80,7 @@ def update_stream(game: GameState, action_stream: tk.Frame) -> None:
                     user.username = "B: " + user.username
         
         # Remove the last event from the bottom of the action stream
-        if len(action_stream.winfo_children()) > 5:
+        if len(action_stream.winfo_children()) > 10:
             action_stream.winfo_children()[0].destroy()
 
     # Recursively call this function after 1 second to incrementally update action stream
@@ -145,7 +145,7 @@ def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     # Update score labels, timer, and action stream
     update_score(game, main_frame, builder)
     update_stream(game, action_stream)
-    update_timer(timer_label, 5, root, main_frame, users, network, game)
+    update_timer(timer_label, 360, root, main_frame, users, network, game)
 
     # Start thread for UDP listening
     game_thread: threading.Thread = threading.Thread(target=network.run_game, args=(game,), daemon = True)

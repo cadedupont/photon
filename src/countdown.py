@@ -85,7 +85,7 @@ def build(root: tk.Tk, users: Dict, network: Networking) -> None:
     frame_rate: int = int(cap.get(cv2.CAP_PROP_FPS))
     video_width: int = 500
     video_height: int = 500
-    seconds: int = 3
+    seconds: int = 30
 
     # Start the countdown
     update_timer(timer_label, seconds, main_frame, network, users, root)
