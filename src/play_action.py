@@ -33,7 +33,10 @@ def build_end_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network: Netw
 
     # Place button in center of root window
     restart_game_button: tk.Button = tk.Button(root, text="Restart Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: build(root, users, network))
+    restart_game_button.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
     end_game_button: tk.Button = tk.Button(root, text="End Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: destroy_root(root, network))
+    end_game_button.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
 
 def update_stream(game: GameState, action_stream: tk.Frame) -> None:
     # Add scroll effect to action stream with game.game_event_list queue
