@@ -1,19 +1,17 @@
 from typing import Dict
 from PIL import Image, ImageTk
-
 import cv2
 import os
-
 import tkinter as tk
 import pygubu
+
+from networking import Networking
 
 # If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
     import winsound
 else:
     import playsound
-
-from networking import Networking
 
 def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, network: Networking, users: Dict, root: tk.Tk) -> None:
     # Update text being displayed in timer label

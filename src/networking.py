@@ -2,11 +2,11 @@
 # Date Created: 30 August 2023
 # Purpose: Module to handle UDP networking for the Photon laser tag system communication between the control console and the packs.
 
+from typing import Dict, List
 import socket
 import time
-from typing import Dict, List
-from user import User
 
+from user import User
 from game_logic import GameState
 
 # CONSTANTS

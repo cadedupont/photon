@@ -4,16 +4,14 @@ import os
 import tkinter as tk
 import supabase
 
-if os.name == "nt":
-    import winsound
-else:
-    import playsound
-
-import splash_screen
-import player_entry
 from networking import Networking
 from user import User
 from game_logic import GameState
+import splash_screen
+import player_entry
+
+if os.name == "nt":
+    import winsound
 
 # Create the Supabase client
 load_dotenv()

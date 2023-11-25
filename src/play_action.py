@@ -1,14 +1,14 @@
+from typing import Dict
 import pygubu
 import tkinter as tk
 import os 
 import random
 import threading
-from typing import Dict
 
-import player_entry
 from networking import Networking
 from game_logic import GameState
-from main import build_root, destroy_root
+from main import destroy_root
+import player_entry
 
 # If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
