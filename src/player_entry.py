@@ -1,18 +1,14 @@
 from typing import Dict, List
-
 from tkinter import messagebox
 import tkinter as tk
 import pygubu
 
 from networking import Networking
 from user import User
-
-# Load the UI file and create the builder
-builder: pygubu.Builder = pygubu.Builder()
-builder.add_from_file("src/ui/player_entry.ui")
+from main import supabase_client
 
 database_response = None
-def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users: Dict) -> None:
+def on_tab(event: tk.Event, root: tk.Tk, entry_ids: Dict, users: Dict, builder: pygubu.Builder) -> None:
     # Make database response global for remembering previous on_tab call
     global database_response
 
@@ -127,7 +123,7 @@ def on_tab(event: tk.Event, root: tk.Tk, supabase_client, entry_ids: Dict, users
             root.after_idle(lambda: user_id_widget.focus_set())
             return
 
-def on_f12(main_frame: tk.Tk, entry_ids: Dict, users: Dict) -> None:
+def on_f12(main_frame: tk.Tk, entry_ids: Dict, users: Dict, builder: pygubu.Builder) -> None:
     # Clear all entry fields
     for entry_id in entry_ids: 
         builder.get_object(entry_ids[entry_id], main_frame).delete(0, tk.END)
@@ -151,14 +147,18 @@ def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> N
         for user in users[team]:
             network.transmit_equipment_code(user.equipment_id)
     
-    # Destroy main_frame
+    # Remove frame from screen without destroying it
     main_frame.destroy()
 
     # Build the player action screen
     import countdown
     countdown.build(root, users, network)
 
-def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> None:
+def build(root: tk.Tk, users: Dict, network: Networking) -> None:
+    # Load the UI file and create the builder
+    builder: pygubu.Builder = pygubu.Builder()
+    builder.add_from_file("src/ui/player_entry.ui")
+
     # Place the main frame in the center of the root window
     main_frame: tk.Frame = builder.get_object("master", root)
     main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -188,8 +188,8 @@ def build(root: tk.Tk, supabase_client, users: Dict, network: Networking) -> Non
     builder.get_object("green_equipment_id_1", green_frame).focus_set()
 
     # Bind keys to lambda functions
-    root.bind("<Tab>", lambda event: on_tab(event, root, supabase_client, entry_ids, users))
-    root.bind("<KeyPress-F12>", lambda event: on_f12(main_frame, entry_ids, users))
+    root.bind("<Tab>", lambda event: on_tab(event, root, entry_ids, users, builder))
+    root.bind("<KeyPress-F12>", lambda event: on_f12(main_frame, entry_ids, users, builder))
     root.bind("<KeyPress-F5>", lambda event: on_f5(main_frame, root, users, network))
 
     # Bind continue button to F5 function for moving on to play action screen

@@ -1,12 +1,14 @@
+from typing import Dict
 import pygubu
 import tkinter as tk
 import os 
 import random
 import threading
-from typing import Dict
 
 from networking import Networking
 from game_logic import GameState
+from main import destroy_root
+import player_entry
 
 # If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
@@ -14,9 +16,47 @@ if os.name == "nt":
 else:
     import playsound
 
-# Load the UI file and create the builder
-builder: pygubu.Builder = pygubu.Builder()
-builder.add_from_file("src/ui/play_action.ui")
+def build_new_game(root: tk.Tk, users: Dict, network: Networking) -> None:
+    # Remove buttons from window
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    # Send back to player entry screen
+    player_entry.build(root, users, network)
+
+def destroy_current_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network: Networking, game: GameState) -> None:
+    # Destroy the main frame
+    main_frame.destroy()
+
+    # Stop playing game music
+    if os.name == "nt":
+        winsound.PlaySound(None, winsound.SND_ASYNC)
+    else:
+        playsound.playsound(None, block=False)
+
+    # Create label for displaying winning team
+    winner: str
+    if game.green_team_score > game.red_team_score:
+        winner = "Green Team Wins!"
+    elif game.red_team_score > game.green_team_score:
+        winner = "Red Team Wins!"
+    else:
+        winner = "Tie Game!"
+    winner_label: tk.Label = tk.Label(root, text=winner, font=("Fixedsys", 20), bg="#FFFFFF")
+    winner_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    # Clear the user dictionary
+    users["red"].clear()
+    users["green"].clear()
+
+    # Destroy game object
+    del game
+
+    # Place restart game and end game buttons
+    restart_game_button: tk.Button = tk.Button(root, text="Restart Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: build_new_game(root, users, network))
+    restart_game_button.place(relx=0.5, rely=0.55, anchor=tk.CENTER)
+    end_game_button: tk.Button = tk.Button(root, text="End Game", font=("Fixedsys", 16), bg="#FFFFFF", command=lambda: destroy_root(root, network))
+    end_game_button.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
 
 def update_stream(game: GameState, action_stream: tk.Frame) -> None:
     # Add scroll effect to action stream with game.game_event_list queue
@@ -40,13 +80,13 @@ def update_stream(game: GameState, action_stream: tk.Frame) -> None:
                     user.username = "B: " + user.username
         
         # Remove the last event from the bottom of the action stream
-        if len(action_stream.winfo_children()) > 5:
+        if len(action_stream.winfo_children()) > 10:
             action_stream.winfo_children()[0].destroy()
 
     # Recursively call this function after 1 second to incrementally update action stream
     action_stream.after(1000, update_stream, game, action_stream)
 
-def update_score(game: GameState, main_frame: tk.Frame) -> None:
+def update_score(game: GameState, main_frame: tk.Frame, builder: pygubu.Builder) -> None:
     # Update scores for green team
     for user in game.green_users:
         builder.get_object(f"green_username_{user.row}", main_frame).config(text=user.username)
@@ -60,10 +100,10 @@ def update_score(game: GameState, main_frame: tk.Frame) -> None:
     builder.get_object("red_total_score", main_frame).config(text=game.red_team_score)
 
     # Recursively call this function after 1 second to incrementally update scores
-    main_frame.after(1000, update_score, game, main_frame)
+    main_frame.after(1000, update_score, game, main_frame, builder)
 
 # Implementing play countdown timer for 6-minutes 
-def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> None:
+def update_timer(timer_label: tk.Label, seconds: int, root: tk.Tk, main_frame: tk.Frame, users: Dict, network: Networking, game: GameState) -> None:
     # Update text being displayed in timer label
     mins, secs = divmod(seconds, 60)
     timer_label.config(text=f"Time Remaining: {mins:01d}:{secs:02d}")
@@ -71,11 +111,15 @@ def update_timer(main_frame: tk.Frame, timer_label: tk.Label, seconds: int) -> N
     # Continue counting down, destroy main frame when timer reaches 0
     if seconds > 0:
         seconds -= 1
-        timer_label.after(1000, update_timer, main_frame, timer_label, seconds)
+        timer_label.after(1000, update_timer, timer_label, seconds, root, main_frame, users, network, game)
     else:
-        main_frame.destroy()
+        destroy_current_game(root, main_frame, users, network, game)
 
 def build(network: Networking, users: Dict, root: tk.Tk) -> None:
+    # Load the UI file and create the builder
+    builder: pygubu.Builder = pygubu.Builder()
+    builder.add_from_file("src/ui/play_action.ui")
+
     # Select random game music file
     file = random.choice(os.listdir("res/moosic"))
 
@@ -99,11 +143,10 @@ def build(network: Networking, users: Dict, root: tk.Tk) -> None:
     game: GameState = GameState(users)
 
     # Update score labels, timer, and action stream
-    update_score(game, main_frame)
+    update_score(game, main_frame, builder)
     update_stream(game, action_stream)
-    update_timer(main_frame, timer_label, seconds=360)
+    update_timer(timer_label, 360, root, main_frame, users, network, game)
 
     # Start thread for UDP listening
     game_thread: threading.Thread = threading.Thread(target=network.run_game, args=(game,), daemon = True)
     game_thread.start()
-    # game_thread.join()

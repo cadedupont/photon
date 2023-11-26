@@ -6,3 +6,6 @@ __pycache__/
 
 # VSC configuration folder
 .vscode/
+
+# Python virtual environment
+.venv/

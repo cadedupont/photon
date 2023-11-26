@@ -4,16 +4,21 @@ import os
 import tkinter as tk
 import supabase
 
-if os.name == "nt":
-    import winsound
-else:
-    import playsound
-
-import splash_screen
-import player_entry
 from networking import Networking
 from user import User
 from game_logic import GameState
+import splash_screen
+import player_entry
+
+if os.name == "nt":
+    import winsound
+
+# Create the Supabase client
+load_dotenv()
+supabase_client: supabase.Client = supabase.create_client(
+    os.getenv("SUPABASE_URL"),
+    os.getenv("SUPABASE_KEY")
+)
 
 def build_root() -> tk.Tk:
     # Build main window, set title, make fullscreen
@@ -46,13 +51,6 @@ def destroy_root(root: tk.Tk, network: Networking) -> None:
     root.destroy()
 
 def main() -> None:
-    # Create the Supabase client
-    load_dotenv()
-    supabase_client: supabase.Client = supabase.create_client(
-        os.getenv("SUPABASE_URL"),
-        os.getenv("SUPABASE_KEY")
-    )
-
     # Declare dictionary for storing user information
     # Format: { team: [User, User, ...] }
     users: Dict[str, List[User]] = {
@@ -77,7 +75,7 @@ def main() -> None:
     # After 3 seconds, destroy the splash screen and build the player entry screen
     # Play action screen will be built after F5 is pressed on player entry screen (see on_f5 function in src/player_entry.py)
     root.after(3000, splash.destroy)
-    root.after(3000, player_entry.build, root, supabase_client, users, network)
+    root.after(3000, player_entry.build, root, users, network)
 
     # Run the main loop
     root.mainloop()

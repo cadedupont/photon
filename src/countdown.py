@@ -1,23 +1,17 @@
 from typing import Dict
 from PIL import Image, ImageTk
-
 import cv2
 import os
-
 import tkinter as tk
 import pygubu
+
+from networking import Networking
 
 # If on Windows, import winsound, else import playsound for countdown music
 if os.name == "nt":
     import winsound
 else:
     import playsound
-
-from networking import Networking
-
-# Load the UI file and create the builder
-builder: pygubu.Builder = pygubu.Builder()
-builder.add_from_file("src/ui/countdown.ui")
 
 def update_timer(timer_label: tk.Label, seconds: int, main_frame: tk.Frame, network: Networking, users: Dict, root: tk.Tk) -> None:
     # Update text being displayed in timer label
@@ -53,6 +47,10 @@ def update_video(video_label: tk.Label, cap: cv2.VideoCapture, frame_rate: int, 
         update_video(video_label, cap, frame_rate, video_width, video_height)
 
 def build(root: tk.Tk, users: Dict, network: Networking) -> None:
+    # Load the UI file and create the builder
+    builder: pygubu.Builder = pygubu.Builder()
+    builder.add_from_file("src/ui/countdown.ui")
+
     # Based on OS, play the countdown sound
     # Play sound asynchronously to prevent freezing
     if os.name == "nt":
@@ -85,7 +83,7 @@ def build(root: tk.Tk, users: Dict, network: Networking) -> None:
     frame_rate: int = int(cap.get(cv2.CAP_PROP_FPS))
     video_width: int = 500
     video_height: int = 500
-    seconds: int = 3
+    seconds: int = 30
 
     # Start the countdown
     update_timer(timer_label, seconds, main_frame, network, users, root)
