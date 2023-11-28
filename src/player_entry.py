@@ -137,6 +137,11 @@ def on_f12(main_frame: tk.Tk, entry_ids: Dict, users: Dict, builder: pygubu.Buil
 
 # f5 key to open play action screen and have 30 second timer before game starts and 6 minute game timer
 def on_f5(main_frame: tk.Tk, root: tk.Tk, users: Dict, network: Networking) -> None:
+    # If there is not at least 1 user for each team, display error message and return
+    if len(users["green"]) < 1 or len(users["red"]) < 1:
+        messagebox.showerror("Error", "There must be at least 1 user on each team")
+        return
+
     # Remove F5, F12, and Tab key bindings
     root.unbind("<Tab>")
     root.unbind("<KeyPress-F12>")
