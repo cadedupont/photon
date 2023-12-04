@@ -24,9 +24,12 @@ def build_root() -> tk.Tk:
     # Build main window, set title, make fullscreen
     root: tk.Tk = tk.Tk()
     root.title("Photon")
-    root.iconbitmap("res/logo.ico")
-    root.state("zoomed")
     root.configure(background="white")
+
+    # If platform is not Linux, set state to zoomed and include icon
+    if os.name != "posix":
+        root.state("zoomed")
+        root.iconbitmap("res/logo.ico")
 
     # Force window to fill screen, place at top left
     width: int = root.winfo_screenwidth()
