@@ -54,9 +54,16 @@ Clean up the project's generated files:
 
 Running `make` without any arguments will run `init`, `run`, and `clean` in that order. Or, running `make reset` will run `clean` and `init`.
 
-The player entry console will require using the `<tab>` key to switch between each field. When you've completed registering players for one team, use the mouse to select the other team's first equipment ID field and continue registering players. Click either the `Continue` button or press `<F5>` to finalize player registration and continue to the countdown screen.
+The player entry console will require using the `<tab>` key to switch between each field. When you've completed registering players for one team, use the mouse to select the other team's first equipment ID field and continue registering players. Click either the `Continue` button or press `<F5>` to finalize player registration and continue to the countdown screen. Press `<F12>` while still in the player entry console to clear all player entries.
 
 Make sure that the equipment IDs you entered in the traffic generator match the ones you entered in the player entry console.
+
+# Screenshots:
+<p align="center">
+   <img width=800px src="https://github.com/cadedupont/photon/assets/98860495/84c119e4-2a8c-46d4-8211-1de6e134f328"><br>
+   <img width=800px src="https://github.com/cadedupont/photon/assets/98860495/463e9643-5aac-4f93-a45a-d17e6f48d3ee"><br>
+   <img width=800px src="https://github.com/cadedupont/photon/assets/98860495/87e2d5c5-1083-43fe-8a02-ea62434ecdcf"><br>
+</p>
 
 # Contributors:
 |      Name         |        GitHub Handle                  |
