@@ -31,8 +31,6 @@ def destroy_current_game(root: tk.Tk, main_frame: tk.Frame, users: dict, network
     # Stop playing game music
     if os.name == "nt":
         winsound.PlaySound(None, winsound.SND_ASYNC)
-    else:
-        playsound.playsound(None, block=False)
 
     # Create label for displaying winning team
     winner: str

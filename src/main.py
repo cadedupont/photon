@@ -1,5 +1,6 @@
 from typing import Dict, List
 from dotenv import load_dotenv
+from platform import system
 import os
 import tkinter as tk
 import supabase
@@ -27,9 +28,9 @@ def build_root() -> tk.Tk:
     root.configure(background="white")
 
     # If platform is not Linux, set state to zoomed and include icon
-    if os.name != "posix":
+    if system() != "Linux":
         root.state("zoomed")
-        root.iconbitmap("res/logo.ico")
+        root.iconbitmap("res/photon.ico")
 
     # Force window to fill screen, place at top left
     width: int = root.winfo_screenwidth()
